@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:mais_receitas/design/my_theme.dart';
+import 'package:mais_receitas/screens/login_screen.dart';
 import 'package:mais_receitas/screens/recipes_page.dart';
 
 void main() {
