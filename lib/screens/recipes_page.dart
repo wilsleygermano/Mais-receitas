@@ -15,7 +15,7 @@ class _RecipesPageState extends State<RecipesPage> {
   late ScrollController _scrollController;
 
   int _currentIndex = 0;
-  List cardList = [const MethodCard(), const IngredientCard()];
+  List cardList = <Widget>[const MethodCard(), const IngredientCard()];
   List<T> map<T>(List list, Function handler) {
     List<T> result = [];
     for (var i = 0; i < list.length; i++) {
@@ -40,72 +40,74 @@ class _RecipesPageState extends State<RecipesPage> {
           child: Stack(
             children: [
               Container(
-                decoration:const  BoxDecoration(
+                decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage("lib/images/background.png"),fit: BoxFit.fill,
-      
+                    image: AssetImage('lib/images/background.png'),
+                    fit: BoxFit.fill,
                   ),
                 ),
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Row(
-                      children: [
-                        const Text(
-                          "123456",
+              Padding(
+                padding: const EdgeInsets.only(left: 8, right: 8),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      height: 268,
+                      width: 237,
+                      alignment: Alignment.topCenter,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('lib/images/logo.png'),
+                          fit: BoxFit.fill,
                         ),
-                      ],
+                      ),
                     ),
-                  ),
-                  CarouselSlider(
-                    options: CarouselOptions(
-                      enlargeCenterPage: true,
-                      height: 354.0,
-                      viewportFraction: 1.0,
-                      onPageChanged: (index, reason) {
-                        setState(() {
-                          _currentIndex = index;
-                        });
-                      },
-                    ),
-                    items: cardList.map((card) {
-                      return Builder(builder: (BuildContext context) {
-                        return Container(
-                          decoration: const BoxDecoration(
-                            color: MyColors.primarylight,
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10),
+                    CarouselSlider(
+                      options: CarouselOptions(
+                        enlargeCenterPage: true,
+                        height: 354.0,
+                        viewportFraction: 1.0,
+                        onPageChanged: (index, reason) {
+                          setState(() {
+                            _currentIndex = index;
+                          });
+                        },
+                      ),
+                      items: cardList.map<Widget>((card) {
+                        return Builder(builder: (BuildContext context) {
+                          return Container(
+                            //  padding: EdgeInsets.only(left: 32, right: 32),
+                            decoration: const BoxDecoration(
+                              color: MyColors.primarylight,
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10),
+                              ),
                             ),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(16.0),
                             child: card,
+                          );
+                        });
+                      }).toList(),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: map<Widget>(cardList, (index, url) {
+                        return Container(
+                          width: 10.0,
+                          height: 10.0,
+                          margin: const EdgeInsets.symmetric(
+                              vertical: 10.0, horizontal: 2.0),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: _currentIndex == index
+                                ? MyColors.primarylight
+                                : MyColors.primarydark,
                           ),
                         );
-                      });
-                    }).toList(),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: map<Widget>(cardList, (index, url) {
-                      return Container(
-                        width: 10.0,
-                        height: 10.0,
-                        margin: const EdgeInsets.symmetric(
-                            vertical: 10.0, horizontal: 2.0),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: _currentIndex == index
-                              ? Colors.white
-                              : MyColors.primarydark,
-                        ),
-                      );
-                    }),
-                  ),
-                ],
+                      }),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
