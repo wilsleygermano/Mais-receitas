@@ -113,6 +113,15 @@ class _SignupScreenState extends State<SignupScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         MainButton(
+                          labelText: "VOLTAR",
+                          buttonPressed: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const LoginScreen(),
+                            ),
+                          ),
+                        ),
+                        MainButton(
                           labelText: "CADASTRAR",
                           buttonPressed: () async {
                             if (_passwordController.text ==
@@ -145,7 +154,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               ),
                             );
                           },
-                        )
+                        ),
                       ],
                     ),
                   ],
