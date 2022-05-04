@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:mais_receitas/data/register_user.dart';
 import 'package:mais_receitas/design/my_colors.dart';
+import 'package:mais_receitas/screens/login_screen.dart';
 
+import '../classes/my_dialog.dart';
 import '../widgets/main_button.dart';
 import '../widgets/my_text_field.dart';
 
@@ -38,7 +39,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
               ),
               SingleChildScrollView(
-                padding: EdgeInsets.only(top: 16),
+                padding: const EdgeInsets.only(top: 16),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -64,7 +65,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     MyTextField(
                       controller: _nameController,
                       hintText: "Nome",
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.badge,
                         color: MyColors.primarydark,
                       ),
@@ -72,7 +73,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     MyTextField(
                       controller: _lastNameController,
                       hintText: "Sobrenome",
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.badge,
                         color: MyColors.primarydark,
                       ),
@@ -80,7 +81,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     MyTextField(
                       controller: _emailController,
                       hintText: "E-mail",
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.alternate_email,
                         color: MyColors.primarydark,
                       ),
@@ -92,7 +93,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       controller: _passwordController,
                       hintText: "Senha",
                       isObscure: true,
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.key,
                         color: MyColors.primarydark,
                       ),
@@ -101,7 +102,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       controller: _passwordConfirmationController,
                       hintText: "Confirme a Senha",
                       isObscure: true,
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.key,
                         color: MyColors.primarydark,
                       ),
@@ -117,52 +118,33 @@ class _SignupScreenState extends State<SignupScreen> {
                           buttonPressed: () async {
                             if (_passwordController.text ==
                                 _passwordConfirmationController.text) {
-                              return await registerUser(
+                              await registerUser(
                                 _nameController.text,
                                 _lastNameController.text,
                                 _emailController.text.trim(),
                                 _passwordController.text,
                               );
                             } else {
-                              showDialog(
-                                context: context,
-                                builder: (context) => AlertDialog(
-                                  title: Text(
-                                    'ERRO:',
-                                    style: TextStyle(
-                                        fontFamily:
-                                            GoogleFonts.inter().fontFamily,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                        color: MyColors.primarydark),
-                                  ),
-                                  content: Text(
-                                    'As senhas não conferem!',
-                                    style: TextStyle(
-                                        fontFamily:
-                                            GoogleFonts.inter().fontFamily,
-                                        fontSize: 8,
-                                        fontWeight: FontWeight.bold,
-                                        color: MyColors.primarydark),
-                                  ),
-                                  actions: <Widget>[
-                                    OutlinedButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text(
-                                        'Ok',
-                                        style: TextStyle(
-                                            fontFamily:
-                                                GoogleFonts.inter().fontFamily,
-                                            fontSize: 12,
-                                            color: MyColors.primaryoriginal),
-                                      ),
-                                    )
-                                  ],
-                                ),
+                              myDialog(
+                                context,
+                                'ERRO:',
+                                'As senhas não conferem!',
+                                'OK',
+                                () => Navigator.pop(context),
                               );
                             }
+                            return myDialog(
+                              context,
+                              "SUCESSO",
+                              "Usuário criado!",
+                              "OK",
+                              () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const LoginScreen(),
+                                ),
+                              ),
+                            );
                           },
                         )
                       ],
