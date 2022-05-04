@@ -1,0 +1,93 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:mais_receitas/design/my_colors.dart';
+import 'package:mais_receitas/widgets/main_button.dart';
+import 'package:mais_receitas/widgets/my_text_field.dart';
+
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: SafeArea(
+        child: Center(
+          child: Stack(
+            children: [
+              Container(
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('lib/images/background.png'),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+              Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 268,
+                        width: 237,
+                        alignment: Alignment.topCenter,
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('lib/images/logo.png'),
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 72,
+                  ),
+                  MyTextField(
+                    controller: _emailController,
+                    hintText: "E-mail",
+                    icon: Icon(
+                      Icons.alternate_email,
+                      color: MyColors.primarydark,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 36,
+                  ),
+                  MyTextField(
+                    controller: _passwordController,
+                    hintText: "Senha",
+                    isObscure: true,
+                    icon: Icon(
+                      Icons.key,
+                      color: MyColors.primarydark,
+                    ),
+                  ),
+                   SizedBox(
+                    height: 80,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      MainButton(labelText: "ENTRAR"),
+                      MainButton(labelText: "CADASTRAR")
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
