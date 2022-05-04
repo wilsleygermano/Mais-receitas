@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mais_receitas/design/my_colors.dart';
 import 'package:mais_receitas/widgets/main_button.dart';
+import 'package:mais_receitas/widgets/my_password_field.dart';
 import 'package:mais_receitas/widgets/my_text_field.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -64,16 +65,15 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(
                     height: 36,
                   ),
-                  MyTextField(
+                  MyPasswordField(
                     controller: _passwordController,
                     hintText: "Senha",
-                    isObscure: true,
                     icon: Icon(
                       Icons.key,
                       color: MyColors.primarydark,
                     ),
                   ),
-                   SizedBox(
+                  SizedBox(
                     height: 80,
                   ),
                   Row(

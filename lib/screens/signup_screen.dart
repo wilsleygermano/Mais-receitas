@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mais_receitas/data/register_user.dart';
 import 'package:mais_receitas/design/my_colors.dart';
 import 'package:mais_receitas/screens/login_screen.dart';
+import 'package:mais_receitas/widgets/my_password_field.dart';
 
 import '../classes/my_dialog.dart';
 import '../widgets/main_button.dart';
@@ -89,20 +90,18 @@ class _SignupScreenState extends State<SignupScreen> {
                     // SizedBox(
                     //   height: 36,
                     // ),
-                    MyTextField(
+                    MyPasswordField(
                       controller: _passwordController,
                       hintText: "Senha",
-                      isObscure: true,
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.key,
                         color: MyColors.primarydark,
                       ),
                     ),
-                    MyTextField(
+                    MyPasswordField(
                       controller: _passwordConfirmationController,
-                      hintText: "Confirme a Senha",
-                      isObscure: true,
-                      icon: const Icon(
+                      hintText: "Confirme sua Senha",
+                      icon: Icon(
                         Icons.key,
                         color: MyColors.primarydark,
                       ),
