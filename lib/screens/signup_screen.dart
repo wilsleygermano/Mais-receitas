@@ -64,6 +64,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     //   height: 72,
                     // ),
                     MyTextField(
+                    textInputActionField: TextInputAction.next,
                       controller: _nameController,
                       hintText: "Nome",
                       icon: const Icon(
@@ -72,6 +73,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                     ),
                     MyTextField(
+                    textInputActionField: TextInputAction.next,
                       controller: _lastNameController,
                       hintText: "Sobrenome",
                       icon: const Icon(
@@ -80,6 +82,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                     ),
                     MyTextField(
+                    textInputActionField: TextInputAction.next,
                       controller: _emailController,
                       hintText: "E-mail",
                       icon: const Icon(
@@ -91,6 +94,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     //   height: 36,
                     // ),
                     MyPasswordField(
+                    textInputActionField: TextInputAction.next,
                       controller: _passwordController,
                       hintText: "Senha",
                       icon: Icon(
@@ -99,6 +103,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                     ),
                     MyPasswordField(
+                    textInputActionField: TextInputAction.done,
                       controller: _passwordConfirmationController,
                       hintText: "Confirme sua Senha",
                       icon: Icon(

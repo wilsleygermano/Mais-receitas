@@ -59,6 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   MyTextField(
                     controller: _emailController,
                     hintText: "E-mail",
+                    textInputActionField: TextInputAction.next,
                     icon: Icon(
                       Icons.alternate_email,
                       color: MyColors.primarydark,
@@ -68,6 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 36,
                   ),
                   MyPasswordField(
+                    textInputActionField: TextInputAction.done,
                     controller: _passwordController,
                     hintText: "Senha",
                     icon: Icon(
