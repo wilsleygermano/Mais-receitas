@@ -108,7 +108,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       MainButton(
                         labelText: "CADASTRAR",
-                        buttonPressed: () => Navigator.push(
+                        buttonPressed: 
+                        () => Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const SignupScreen(),

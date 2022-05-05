@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 Future fetchRecipesNames() async {
   try {
     final dio = Dio();
-    const urlLogin =
+    const url =
         "https://afrodite-recipe.herokuapp.com/api/v0/recipes/names";
-    var response = await dio.get(urlLogin);
+    var response = await dio.get(url);
     return RecipesNameModel.fromJson(response.data as Map<String, dynamic>);
   } on DioError catch (e) {
     debugPrint('${e.error}');
