@@ -25,13 +25,16 @@ class MethodCard extends StatelessWidget {
                   )),
             ),
             Container(
-                alignment: Alignment.topLeft,
-                child: Text("Ingredientes:",
-                    style: TextStyle(
-                      color: MyColors.primarydark,
-                      fontFamily: GoogleFonts.ptSerif().fontFamily,
-                      fontSize: 12,
-                    ))),
+              alignment: Alignment.topLeft,
+              child: Text(
+                "Ingredientes:",
+                style: TextStyle(
+                  color: MyColors.primarydark,
+                  fontFamily: GoogleFonts.ptSerif().fontFamily,
+                  fontSize: 12,
+                ),
+              ),
+            ),
             ListView(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,

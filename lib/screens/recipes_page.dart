@@ -100,7 +100,7 @@ class _RecipesPageState extends State<RecipesPage> {
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: _currentIndex == index
-                                ? MyColors.primarylight
+                                ? Colors.deepPurple
                                 : MyColors.primarydark,
                           ),
                         );
