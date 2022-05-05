@@ -13,7 +13,8 @@ class MyTextField extends StatefulWidget {
     Key? key,
     required this.controller,
     required this.hintText,
-    required this.icon, required this.textInputActionField,
+    required this.icon,
+    required this.textInputActionField,
   }) : super(key: key);
   @override
   State<MyTextField> createState() => _MyTextFieldState();

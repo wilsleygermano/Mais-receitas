@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:mais_receitas/classes/my_dialog.dart';
+import 'package:mais_receitas/screens/home_page.dart';
 import 'package:mais_receitas/screens/signup_screen.dart';
 
 Future loginUser(
@@ -28,7 +29,7 @@ Future loginUser(
         () => Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const SignupScreen(), // MUDAR ISSO DEPOIS
+            builder: (context) => const HomePage(), // MUDAR ISSO DEPOIS
           ),
         ),
       )
