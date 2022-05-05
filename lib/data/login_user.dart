@@ -34,30 +34,31 @@ Future loginUser(
       )
     ];
   } on DioError catch (e) {
-    if (e.response!.statusCode == 400) {
-      myDialog(
-        context,
-        "ERRO:",
-        "Senha e/ou e-mail errado(s)",
-        "OK",
-        () => Navigator.pop(context),
-      );
-    }
+    myDialog(
+      context,
+      "ERRO:",
+      "${e.response}",
+      "OK",
+      () => Navigator.pop(context),
+    );
   }
-  // if (response.statusCode == 201) {
-  //   return LoginModel.fromJson(response.data as Map<String, dynamic>);
-  // } else {
-  //   return print(response.data);
-  // }
 }
 
 class LoginModel {
+  String? id;
+  String? firstName;
+  String? lastName;
   String? email;
   String? password;
+  String? userToken;
 
   LoginModel({
+    this.id,
+    this.firstName,
+    this.lastName,
     this.email,
     this.password,
+    this.userToken,
   });
 
   LoginModel.fromJson(Map<String, dynamic> json) {
