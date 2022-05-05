@@ -2,7 +2,11 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 
 Future registerUser(
-    String firstName, String lastName, String email, String password) async {
+  String firstName,
+  String lastName,
+  String email,
+  String password,
+) async {
   var urlLogin = 'https://academy-auth.herokuapp.com/register';
   var response = await Dio().post(urlLogin, data: {
     'first_name': firstName,

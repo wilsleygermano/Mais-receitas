@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mais_receitas/classes/my_dialog.dart';
+import 'package:mais_receitas/data/login_user.dart';
 import 'package:mais_receitas/design/my_colors.dart';
 import 'package:mais_receitas/screens/signup_screen.dart';
 import 'package:mais_receitas/widgets/main_button.dart';
@@ -79,7 +81,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      MainButton(labelText: "ENTRAR"),
+                      MainButton(
+                        labelText: "ENTRAR",
+                        buttonPressed: () async {
+                          await loginUser(
+                            _emailController.text.trim(),
+                            _passwordController.text,
+                            context,
+                          );
+                        },
+                      ),
                       MainButton(
                         labelText: "CADASTRAR",
                         buttonPressed: () => Navigator.push(
