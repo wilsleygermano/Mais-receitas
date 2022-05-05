@@ -64,6 +64,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     //   height: 72,
                     // ),
                     MyTextField(
+                      textInputActionField: TextInputAction.next,
                       controller: _nameController,
                       hintText: "Nome",
                       icon: const Icon(
@@ -72,6 +73,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                     ),
                     MyTextField(
+                      textInputActionField: TextInputAction.next,
                       controller: _lastNameController,
                       hintText: "Sobrenome",
                       icon: const Icon(
@@ -80,6 +82,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                     ),
                     MyTextField(
+                      textInputActionField: TextInputAction.next,
                       controller: _emailController,
                       hintText: "E-mail",
                       icon: const Icon(
@@ -91,6 +94,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     //   height: 36,
                     // ),
                     MyPasswordField(
+                      textInputActionField: TextInputAction.next,
                       controller: _passwordController,
                       hintText: "Senha",
                       icon: Icon(
@@ -99,6 +103,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                     ),
                     MyPasswordField(
+                      textInputActionField: TextInputAction.done,
                       controller: _passwordConfirmationController,
                       hintText: "Confirme sua Senha",
                       icon: Icon(
@@ -124,16 +129,40 @@ class _SignupScreenState extends State<SignupScreen> {
                         MainButton(
                           labelText: "CADASTRAR",
                           buttonPressed: () async {
-                            if (_passwordController.text ==
-                                _passwordConfirmationController.text) {
-                              await registerUser(
-                                _nameController.text,
-                                _lastNameController.text,
-                                _emailController.text.trim(),
-                                _passwordController.text,
+                            if ((_nameController.text.isNotEmpty == true &&
+                                    _lastNameController.text.isNotEmpty == true &&
+                                    _emailController.text.isNotEmpty == true &&
+                                    _passwordController.text.isNotEmpty ==
+                                        true &&
+                                    _passwordConfirmationController
+                                            .text.isNotEmpty ==
+                                        true) &&
+                                _passwordController.text ==
+                                    _passwordConfirmationController.text) {
+                              return 
+                                await registerUser(
+                                  _nameController.text,
+                                  _lastNameController.text,
+                                  _emailController.text.trim(),
+                                  _passwordController.text,
+                                  context,
+                                );
+                            }
+                            if (_nameController.text.isNotEmpty != true ||
+                                _lastNameController.text.isNotEmpty != true ||
+                                _emailController.text.isNotEmpty != true ||
+                                _passwordController.text.isNotEmpty != true) {
+                              return myDialog(
+                                context,
+                                "ERRO:",
+                                "Todos os campos devem ser preenchidos",
+                                "OK",
+                                () => Navigator.pop(context),
                               );
-                            } else {
-                              myDialog(
+                            }
+                            if (_passwordController.text !=
+                                _passwordConfirmationController.text) {
+                              return myDialog(
                                 context,
                                 'ERRO:',
                                 'As senhas não conferem!',
@@ -141,18 +170,6 @@ class _SignupScreenState extends State<SignupScreen> {
                                 () => Navigator.pop(context),
                               );
                             }
-                            return myDialog(
-                              context,
-                              "SUCESSO",
-                              "Usuário criado!",
-                              "OK",
-                              () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const LoginScreen(),
-                                ),
-                              ),
-                            );
                           },
                         ),
                       ],
