@@ -86,11 +86,24 @@ class _LoginScreenState extends State<LoginScreen> {
                       MainButton(
                         labelText: "ENTRAR",
                         buttonPressed: () async {
-                          await loginUser(
-                            _emailController.text.trim(),
-                            _passwordController.text,
-                            context,
-                          );
+                          if (_emailController.text.isNotEmpty == true &&
+                              _passwordController.text.isNotEmpty == true) {
+                            return await loginUser(
+                              _emailController.text.trim(),
+                              _passwordController.text,
+                              context,
+                            );
+                          }
+                          if (_emailController.text.isNotEmpty != true ||
+                              _passwordController.text.isNotEmpty != true) {
+                            return myDialog(
+                              context,
+                              "ERRO:",
+                              "Todos os campos devem ser preenchidos",
+                              "OK",
+                              () => Navigator.pop(context),
+                            );
+                          }
                         },
                       ),
                       MainButton(
