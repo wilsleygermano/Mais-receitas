@@ -59,6 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   MyTextField(
                     controller: _emailController,
                     hintText: "E-mail",
+                    textInputActionField: TextInputAction.next,
                     icon: Icon(
                       Icons.alternate_email,
                       color: MyColors.primarydark,
@@ -68,6 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 36,
                   ),
                   MyPasswordField(
+                    textInputActionField: TextInputAction.done,
                     controller: _passwordController,
                     hintText: "Senha",
                     icon: Icon(
@@ -84,11 +86,24 @@ class _LoginScreenState extends State<LoginScreen> {
                       MainButton(
                         labelText: "ENTRAR",
                         buttonPressed: () async {
-                          await loginUser(
-                            _emailController.text.trim(),
-                            _passwordController.text,
-                            context,
-                          );
+                          if (_emailController.text.isNotEmpty == true &&
+                              _passwordController.text.isNotEmpty == true) {
+                            return await loginUser(
+                              _emailController.text.trim(),
+                              _passwordController.text,
+                              context,
+                            );
+                          }
+                          if (_emailController.text.isNotEmpty != true ||
+                              _passwordController.text.isNotEmpty != true) {
+                            return myDialog(
+                              context,
+                              "ERRO:",
+                              "Todos os campos devem ser preenchidos",
+                              "OK",
+                              () => Navigator.pop(context),
+                            );
+                          }
                         },
                       ),
                       MainButton(

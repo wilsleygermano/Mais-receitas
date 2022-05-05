@@ -5,12 +5,14 @@ class MyPasswordField extends StatefulWidget {
   final TextEditingController controller;
   final String hintText;
   final Icon icon;
+  final TextInputAction textInputActionField;
+
 
   const MyPasswordField({
     Key? key,
     required this.controller,
     required this.hintText,
-    required this.icon,
+    required this.icon, required this.textInputActionField,
   }) : super(key: key);
 
   @override
@@ -31,6 +33,7 @@ class _MyPasswordFieldState extends State<MyPasswordField> {
     return Container(
       margin: const EdgeInsets.only(left: 25, right: 25, bottom: 20),
       child: TextField(
+        textInputAction: widget.textInputActionField,
         controller: widget.controller,
         obscureText: !_isVisible,
         decoration: InputDecoration(
