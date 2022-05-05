@@ -26,5 +26,8 @@ class MyTheme {
         fontFamily: GoogleFonts.ptSerif().fontFamily,
       ),
     ),
+   primaryColor: MyColors.primarylight,
+   shadowColor: MyColors.primaryoriginal,
+   backgroundColor: MyColors.primarydark
   );
 }
