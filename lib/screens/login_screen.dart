@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:mais_receitas/classes/my_dialog.dart';
+import 'package:mais_receitas/data/login_user.dart';
 import 'package:mais_receitas/design/my_colors.dart';
+import 'package:mais_receitas/screens/signup_screen.dart';
 import 'package:mais_receitas/widgets/main_button.dart';
+import 'package:mais_receitas/widgets/my_password_field.dart';
 import 'package:mais_receitas/widgets/my_text_field.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -64,23 +67,39 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(
                     height: 36,
                   ),
-                  MyTextField(
+                  MyPasswordField(
                     controller: _passwordController,
                     hintText: "Senha",
-                    isObscure: true,
                     icon: Icon(
                       Icons.key,
                       color: MyColors.primarydark,
                     ),
                   ),
-                   SizedBox(
+                  SizedBox(
                     height: 80,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      MainButton(labelText: "ENTRAR"),
-                      MainButton(labelText: "CADASTRAR")
+                      MainButton(
+                        labelText: "ENTRAR",
+                        buttonPressed: () async {
+                          await loginUser(
+                            _emailController.text.trim(),
+                            _passwordController.text,
+                            context,
+                          );
+                        },
+                      ),
+                      MainButton(
+                        labelText: "CADASTRAR",
+                        buttonPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SignupScreen(),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ],
