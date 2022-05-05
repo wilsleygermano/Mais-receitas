@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../design/my_colors.dart';
+import '../widgets/bottom_bar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,6 +17,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
+      bottomNavigationBar: BottomBar(),
       body: SafeArea(
         child: Center(
           child: Stack(
@@ -58,7 +60,6 @@ class _HomePageState extends State<HomePage> {
                                 child: ListTile(
                                   title: AutoSizeText(
                                     "Pizza de Hamburquibe com Pizza Pizza de Hamburquibe",
-                                  
                                     style: TextStyle(
                                       color: MyColors.primarydark,
                                       fontFamily:
