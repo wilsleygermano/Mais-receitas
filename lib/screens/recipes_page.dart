@@ -4,6 +4,8 @@ import 'package:mais_receitas/design/my_colors.dart';
 import 'package:mais_receitas/widgets/ingredient_card.dart';
 import 'package:mais_receitas/widgets/method_card.dart';
 
+import '../widgets/bottom_bar.dart';
+
 class RecipesPage extends StatefulWidget {
   const RecipesPage({Key? key}) : super(key: key);
 
@@ -34,6 +36,7 @@ class _RecipesPageState extends State<RecipesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomBar(),
       backgroundColor: Colors.transparent,
       body: SafeArea(
         child: Center(
