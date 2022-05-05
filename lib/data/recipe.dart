@@ -2,11 +2,11 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-Future recipe() async {
+Future recipe(String choosedRecipe) async {
   try {
     final dio = Dio();
-    const url =
-        'https://afrodite-recipe.herokuapp.com/api/v0/recipes?recipe=Hamburquibe';
+    var url =
+        'https://afrodite-recipe.herokuapp.com/api/v0/recipes?recipe=${choosedRecipe}';
     var response = await dio.get(url);
     final json = response.data;
     final recipe = Recipe.fromJson(json as Map<String, dynamic>);
