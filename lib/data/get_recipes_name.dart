@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-Future fetchRecipesNames() async {
+Future getRecipesNames() async {
   try {
     final dio = Dio();
     const url =
