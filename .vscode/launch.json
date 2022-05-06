@@ -5,22 +5,29 @@
     "version": "0.2.0",
     "configurations": [
         
+
+
+        
         {
             "name": "Mais-receitas",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "args": ["--no-sound-null-safety"]
         },
         {
             "name": "Mais-receitas (profile mode)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
+            "flutterMode": "profile",
+            "args": ["--no-sound-null-safety"]
+        
         },
         {
             "name": "Mais-receitas (release mode)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
+            "flutterMode": "release",
+            "args": ["--no-sound-null-safety"]
         }
     ]
 }

@@ -3,6 +3,8 @@ import 'package:mais_receitas/design/my_theme.dart';
 import 'package:mais_receitas/screens/home_page.dart';
 import 'package:mais_receitas/screens/login_screen.dart';
 import 'package:mais_receitas/screens/signup_screen.dart';
+import 'package:mais_receitas/screens/splash_screen.dart';
+import 'package:splashscreen/splashscreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'Flutter Demo',
-      home: LoginScreen(),
+      home: Splash(),
     );
   }
 }
