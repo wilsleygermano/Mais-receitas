@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mais_receitas/classes/my_dialog.dart';
+import 'package:mais_receitas/controller/home_controller.dart';
+import 'package:mais_receitas/data/get_recipes_name.dart';
+import 'package:mais_receitas/data/get_recipes_repository.dart';
 import 'package:mais_receitas/data/login_user.dart';
 import 'package:mais_receitas/design/my_colors.dart';
 import 'package:mais_receitas/screens/signup_screen.dart';
@@ -15,8 +18,17 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final controller = HomeController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+
+  @override
+  void initState() {
+    setState(() {
+      controller.start();
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       MainButton(
                         labelText: "CADASTRAR",
-                        buttonPressed: 
+                        buttonPressed:  
                         () => Navigator.push(
                           context,
                           MaterialPageRoute(

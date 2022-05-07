@@ -8,23 +8,23 @@ Future getRecipesNames() async {
     const url =
         "https://afrodite-recipe.herokuapp.com/api/v0/recipes/names";
     var response = await dio.get(url);
-    return RecipesNameModel.fromJson(response.data as Map<String, dynamic>);
+    return RecipesName.fromJson(response.data as Map<String, dynamic>);
   } on DioError catch (e) {
     debugPrint('${e.error}');
   }
 }
 
-class RecipesNameModel {
-  String? recipesName;
+class RecipesName {
+  List<String>? recipesName;
 
-  RecipesNameModel({this.recipesName});
+  RecipesName({this.recipesName});
 
-  RecipesNameModel.fromJson(Map<String, dynamic> json) {
-    recipesName = json['recipesName'];
+  RecipesName.fromJson(Map<String, dynamic> json) {
+    recipesName = json['recipesName'].cast<String>();
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data =  Map<String, dynamic>();
     data['recipesName'] = recipesName;
     return data;
   }
