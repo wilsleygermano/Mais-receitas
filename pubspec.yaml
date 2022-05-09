@@ -40,7 +40,9 @@ dependencies:
   curved_navigation_bar: ^1.0.3
   http: ^0.13.4
   dio: ^4.0.6
-  splashscreen: 
+  favorite_button: ^0.0.3
+  splashscreen:
+
 
 
 
