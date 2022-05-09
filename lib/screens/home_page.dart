@@ -15,13 +15,21 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final homeController = HomeController();
+  final loading = ValueNotifier(true);
+
 
   @override
   void initState() {
     setState(() {
       homeController.start();
+      loadReceitas();
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
