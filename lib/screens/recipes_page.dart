@@ -5,11 +5,10 @@ import 'package:mais_receitas/widgets/ingredient_card.dart';
 import 'package:mais_receitas/widgets/method_card.dart';
 
 import '../widgets/bottom_bar.dart';
+import '../widgets/return_button.dart';
 
 class RecipesPage extends StatefulWidget {
   final String recipesName;
-  
-  
 
   const RecipesPage({required this.recipesName, Key? key}) : super(key: key);
 
@@ -37,8 +36,9 @@ class _RecipesPageState extends State<RecipesPage> {
       MethodCard(
         recipeName: widget.recipesName,
       ),
-       IngredientCard(
-        recipeName: widget.recipesName,)
+      IngredientCard(
+        recipeName: widget.recipesName,
+      )
     ];
 
     super.initState();
@@ -62,6 +62,7 @@ class _RecipesPageState extends State<RecipesPage> {
                   ),
                 ),
               ),
+              const ReturnButton(),
               Padding(
                 padding: const EdgeInsets.only(left: 8, right: 8),
                 child: Column(
