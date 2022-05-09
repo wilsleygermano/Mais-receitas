@@ -8,6 +8,8 @@ import '../widgets/bottom_bar.dart';
 
 class RecipesPage extends StatefulWidget {
   final String recipesName;
+  
+  
 
   const RecipesPage({required this.recipesName, Key? key}) : super(key: key);
 
@@ -35,7 +37,8 @@ class _RecipesPageState extends State<RecipesPage> {
       MethodCard(
         recipeName: widget.recipesName,
       ),
-      const IngredientCard()
+       IngredientCard(
+        recipeName: widget.recipesName,)
     ];
 
     super.initState();
