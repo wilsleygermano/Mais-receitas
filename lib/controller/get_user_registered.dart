@@ -2,9 +2,10 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:mais_receitas/classes/my_dialog.dart';
+import 'package:mais_receitas/data/user_model.dart';
 import 'package:mais_receitas/screens/login_screen.dart';
 
-Future registerUser(
+Future getUserRegistered(
   String firstName,
   String lastName,
   String email,
@@ -45,32 +46,3 @@ Future registerUser(
   }
 }
 
-class UserModel {
-  String? firstName;
-  String? lastName;
-  String? email;
-  String? password;
-
-  UserModel({
-    this.firstName,
-    this.lastName,
-    this.email,
-    this.password,
-  });
-
-  UserModel.fromJson(Map<String, dynamic> json) {
-    firstName = json['first_name'];
-    lastName = json['last_name'];
-    email = json['email'];
-    password = json['password'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['first_name'] = firstName;
-    data['last_name'] = lastName;
-    data['email'] = email;
-    data['password'] = password;
-    return data;
-  }
-}

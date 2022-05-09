@@ -1,9 +1,9 @@
-import 'package:mais_receitas/data/get_recipes_name.dart';
-import 'package:mais_receitas/data/get_recipes_repository.dart';
+import 'package:mais_receitas/controller/get_recipes_repository.dart';
+import 'package:mais_receitas/data/recipes_name_model.dart';
 
 class HomeController {
 
-  RecipesName allRecipesName = RecipesName(recipesName: []);
+  RecipesNameModel allRecipesName = RecipesNameModel(recipesName: []);
   final repository = GetRecipesRepository();
   HomeState state = HomeState.start;
 

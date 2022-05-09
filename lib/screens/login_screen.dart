@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mais_receitas/classes/my_dialog.dart';
 import 'package:mais_receitas/controller/home_controller.dart';
-import 'package:mais_receitas/data/get_recipes_name.dart';
-import 'package:mais_receitas/data/get_recipes_repository.dart';
-import 'package:mais_receitas/data/login_user.dart';
+import 'package:mais_receitas/controller/get_recipes_repository.dart';
+import 'package:mais_receitas/controller/get_user_signed_in.dart';
 import 'package:mais_receitas/design/my_colors.dart';
 import 'package:mais_receitas/screens/signup_screen.dart';
 import 'package:mais_receitas/widgets/main_button.dart';
@@ -100,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         buttonPressed: () async {
                           if (_emailController.text.isNotEmpty == true &&
                               _passwordController.text.isNotEmpty == true) {
-                            return await loginUser(
+                            return await getUserSignedIn(
                               _emailController.text.trim(),
                               _passwordController.text,
                               context,

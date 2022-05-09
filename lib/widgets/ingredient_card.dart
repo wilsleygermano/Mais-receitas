@@ -4,8 +4,9 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mais_receitas/data/recipe_model.dart';
 
-import '../data/get_recipe.dart';
+import '../controller/get_recipe.dart';
 import '../design/my_colors.dart';
 // import 'package:mais_receitas/design/my_colors.dart';
 
@@ -57,7 +58,7 @@ class _IngredientCardState extends State<IngredientCard> {
                       ),
                     ),
                   ),
-                 FutureBuilder<Recipe?>(
+                 FutureBuilder<RecipeModel?>(
               future: getRecipe(widget.recipeName),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
