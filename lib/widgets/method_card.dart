@@ -7,7 +7,8 @@ import 'package:mais_receitas/design/my_theme.dart';
 // import 'package:mais_receitas/design/my_colors.dart';
 
 class MethodCard extends StatelessWidget {
-  const MethodCard({Key? key}) : super(key: key);
+  final String recipeName;
+  const MethodCard({required this.recipeName, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class MethodCard extends StatelessWidget {
                   child: Container(
                     alignment: Alignment.topLeft,
                     child: AutoSizeText(
-                      "Pizza de Hamburquibe  ",
+                      recipeName,
                       style: TextStyle(
                         color: MyColors.primarydark,
                         fontFamily: GoogleFonts.ptSerif().fontFamily,

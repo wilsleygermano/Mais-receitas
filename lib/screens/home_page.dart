@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mais_receitas/controller/home_controller.dart';
+import 'package:mais_receitas/screens/recipes_page.dart';
 
 import '../design/my_colors.dart';
 import '../widgets/bottom_bar.dart';
@@ -17,12 +18,11 @@ class _HomePageState extends State<HomePage> {
   final homeController = HomeController();
   final loading = ValueNotifier(true);
 
-
   @override
   void initState() {
     setState(() {
       homeController.start();
-      loadReceitas();
+      // loadReceitas();
     });
     super.initState();
   }
@@ -66,7 +66,15 @@ class _HomePageState extends State<HomePage> {
                                   borderRadius: BorderRadius.circular(10)),
                               elevation: 0,
                               child: InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: ((context) => RecipesPage( recipesName: homeController.allRecipesName.recipesName![index],
+                                          )),
+                                    ),
+                                  );
+                                },
                                 splashColor: MyColors.primarydark,
                                 child: ListTile(
                                   title: AutoSizeText(
