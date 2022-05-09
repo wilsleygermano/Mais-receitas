@@ -7,7 +7,9 @@ import 'package:mais_receitas/widgets/method_card.dart';
 import '../widgets/bottom_bar.dart';
 
 class RecipesPage extends StatefulWidget {
-  const RecipesPage({Key? key}) : super(key: key);
+  final String recipesName;
+
+  const RecipesPage({required this.recipesName, Key? key}) : super(key: key);
 
   @override
   State<RecipesPage> createState() => _RecipesPageState();
@@ -15,9 +17,9 @@ class RecipesPage extends StatefulWidget {
 
 class _RecipesPageState extends State<RecipesPage> {
   late ScrollController _scrollController;
+  late List cardList;
 
   int _currentIndex = 0;
-  List cardList = <Widget>[const MethodCard(), const IngredientCard()];
   List<T> map<T>(List list, Function handler) {
     List<T> result = [];
     for (var i = 0; i < list.length; i++) {
@@ -29,6 +31,13 @@ class _RecipesPageState extends State<RecipesPage> {
   @override
   void initState() {
     _scrollController = ScrollController();
+    cardList = <Widget>[
+      MethodCard(
+        recipeName: widget.recipesName,
+      ),
+      const IngredientCard()
+    ];
+
     super.initState();
     // setFormAction(true);
   }
