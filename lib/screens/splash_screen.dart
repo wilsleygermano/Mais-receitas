@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mais_receitas/screens/home_page.dart';
+import 'package:mais_receitas/screens/login_screen.dart';
 import 'package:splashscreen/splashscreen.dart';
 
 class Splash extends StatefulWidget {
@@ -14,7 +15,7 @@ class _SplashState extends State<Splash> {
   Widget build(BuildContext context) {
     return SplashScreen(
         seconds: 4,
-        navigateAfterSeconds: const HomePage(),
+        navigateAfterSeconds: HomePage(),
         imageBackground: const AssetImage("lib/images/splash.gif"),
         backgroundColor: Colors.transparent,
         styleTextUnderTheLoader: const TextStyle(),

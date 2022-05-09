@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mais_receitas/data/register_user.dart';
+import 'package:mais_receitas/controller/get_user_registered.dart';
 import 'package:mais_receitas/design/my_colors.dart';
 import 'package:mais_receitas/screens/login_screen.dart';
 import 'package:mais_receitas/widgets/my_password_field.dart';
@@ -140,7 +140,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 _passwordController.text ==
                                     _passwordConfirmationController.text) {
                               return 
-                                await registerUser(
+                                await getUserRegistered(
                                   _nameController.text,
                                   _lastNameController.text,
                                   _emailController.text.trim(),

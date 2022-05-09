@@ -1,31 +1,11 @@
-import 'dart:async';
-import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
+class RecipeModel {
+  RecipesModel? recipes;
 
-Future<Recipe?> getRecipe(String choosedRecipe) async {
-  Recipe? recipe;
-  try {
-    final dio = Dio();
-    var url =
-        'https://afrodite-recipe.herokuapp.com/api/v0/recipes?recipe=${choosedRecipe}';
-    var response = await dio.get(url);
-    final json = response.data;
-    recipe = Recipe.fromJson(json as Map<String, dynamic>);
-    return recipe;
-  } on DioError catch (e) {
-    debugPrint("${e.error}");
-  }
-  return recipe;
-}
+  RecipeModel({this.recipes});
 
-class Recipe {
-  Recipes? recipes;
-
-  Recipe({this.recipes});
-
-  Recipe.fromJson(Map<String, dynamic> json) {
+  RecipeModel.fromJson(Map<String, dynamic> json) {
     recipes =
-        json['recipes'] != null ? Recipes.fromJson(json['recipes']) : null;
+        json['recipes'] != null ? RecipesModel.fromJson(json['recipes']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -37,14 +17,14 @@ class Recipe {
   }
 }
 
-class Recipes {
+class RecipesModel {
   Id? iId;
   String? nome;
   List<Secao>? secao;
 
-  Recipes({this.iId, this.nome, this.secao});
+  RecipesModel({this.iId, this.nome, this.secao});
 
-  Recipes.fromJson(Map<String, dynamic> json) {
+  RecipesModel.fromJson(Map<String, dynamic> json) {
     iId = json['_id'] != null ? Id.fromJson(json['_id']) : null;
     nome = json['nome'];
     if (json['secao'] != null) {

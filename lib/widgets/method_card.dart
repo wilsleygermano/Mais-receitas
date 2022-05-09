@@ -2,7 +2,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mais_receitas/data/get_recipe.dart';
+import 'package:mais_receitas/controller/get_recipe.dart';
+import 'package:mais_receitas/data/recipe_model.dart';
 import 'package:mais_receitas/design/my_colors.dart';
 // import 'package:mais_receitas/design/my_theme.dart';
 // import 'package:mais_receitas/design/my_colors.dart';
@@ -62,7 +63,7 @@ class _MethodCardState extends State<MethodCard> {
                 ),
               ),
             ),
-            FutureBuilder<Recipe?>(
+            FutureBuilder<RecipeModel?>(
               future: getRecipe(widget.recipeName),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
