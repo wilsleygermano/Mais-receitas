@@ -17,7 +17,7 @@ Future getRecipesNames() async {
 class RecipesName {
   List<String>? recipesName;
 
-  RecipesName({this.recipesName});
+  RecipesName({this.recipesName = const []});
 
   RecipesName.fromJson(Map<String, dynamic> json) {
     recipesName = json['recipesName'].cast<String>();
