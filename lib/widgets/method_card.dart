@@ -1,17 +1,21 @@
+import 'dart:async';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mais_receitas/controller/favorite_button_pressed.dart';
 import 'package:mais_receitas/controller/get_recipe.dart';
 import 'package:mais_receitas/data/recipe_model.dart';
 import 'package:mais_receitas/design/my_colors.dart';
-// import 'package:mais_receitas/design/my_theme.dart';
-// import 'package:mais_receitas/design/my_colors.dart';
+
 
 class MethodCard extends StatefulWidget {
   final String recipeName;
-  const MethodCard({required this.recipeName, Key? key}) : super(key: key);
+  const MethodCard({
+    required this.recipeName,
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<MethodCard> createState() => _MethodCardState();
@@ -19,12 +23,17 @@ class MethodCard extends StatefulWidget {
 
 class _MethodCardState extends State<MethodCard> {
   final dataBase = FirebaseFirestore.instance;
-  // test variable - firestore
-  final user = <String, dynamic>{
-    "first": "Ada",
-    "last": "Lovelace",
-    "born": 1815
-  };
+  late String recipeTitle;
+  late Map<String, dynamic> favoritedRecipe = {};
+  late StreamSubscription<DocumentSnapshot> subscription;
+  late DocumentReference documentReference;
+
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -56,12 +65,7 @@ class _MethodCardState extends State<MethodCard> {
                   isFavorite: false,
                   iconColor: Colors.deepPurple,
                   valueChanged: (_isFavorite) async {
-                    [
-                      print('Is Favorite : $_isFavorite'),
-                      await dataBase.collection("teste").add(user).then(
-                          (DocumentReference doc) => print(
-                              'DocumentSnapshot added with ID: ${doc.id}'))
-                    ];
+                    await favoriteButtonPressed(recipeTitle, favoritedRecipe);
                   },
                 ),
               ],
@@ -81,6 +85,13 @@ class _MethodCardState extends State<MethodCard> {
               future: getRecipe(widget.recipeName),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
+                  recipeTitle = "${snapshot.data!.recipes!.nome}";
+                  favoritedRecipe.addAll({
+                    "recipeName": "${snapshot.data!.recipes!.nome}",
+                    "method": "${snapshot.data!.recipes!.secao![0].conteudo!}",
+                    "ingredients":
+                        "${snapshot.data!.recipes!.secao![1].conteudo!}",
+                  });
                   return ListView.builder(
                     itemCount:
                         snapshot.data!.recipes!.secao![0].conteudo!.length,
