@@ -19,8 +19,10 @@ Future getUserSignedIn(
         'password': password,
       },
     );
+    UserModel user;
+    user = UserModel.fromJson(response.data as Map<String, dynamic>);
     return [
-      UserModel.fromJson(response.data as Map<String, dynamic>),
+      user,
       myDialog(
         context,
         "SUCESSO",
@@ -29,10 +31,10 @@ Future getUserSignedIn(
         () => Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const HomePage(), // MUDAR ISSO DEPOIS
+            builder: (context) => HomePage(),
           ),
         ),
-      )
+      ),
     ];
   } on DioError catch (e) {
     myDialog(
@@ -44,4 +46,3 @@ Future getUserSignedIn(
     );
   }
 }
-
