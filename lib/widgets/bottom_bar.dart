@@ -14,6 +14,7 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return CurvedNavigationBar(
+      
       key: _bottomBarKey,
       index: 0,
       height: 60.0,
