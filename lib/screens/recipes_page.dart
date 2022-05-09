@@ -80,6 +80,7 @@ class _RecipesPageState extends State<RecipesPage> {
                     ),
                     CarouselSlider(
                       options: CarouselOptions(
+                        enableInfiniteScroll: false,
                         enlargeCenterPage: true,
                         height: 354.0,
                         viewportFraction: 1.0,
