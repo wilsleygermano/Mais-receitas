@@ -13,7 +13,7 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return SplashScreen(
-        seconds: 8,
+        seconds: 4,
         navigateAfterSeconds: const HomePage(),
         imageBackground: const AssetImage("lib/images/splash.gif"),
         backgroundColor: Colors.transparent,
