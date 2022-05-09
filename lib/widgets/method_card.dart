@@ -1,3 +1,5 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mais_receitas/design/my_colors.dart';
@@ -15,14 +17,32 @@ class MethodCard extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              alignment: Alignment.topLeft,
-              child: Text("Prato",
-                  style: TextStyle(
-                    color: MyColors.primarydark,
-                    fontFamily: GoogleFonts.ptSerif().fontFamily,
-                    fontSize: 24,
-                  )),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flexible(
+                  child: Container(
+                    alignment: Alignment.topLeft,
+                    child: AutoSizeText(
+                      "Pizza de Hamburquibe  ",
+                      style: TextStyle(
+                        color: MyColors.primarydark,
+                        fontFamily: GoogleFonts.ptSerif().fontFamily,
+                        fontSize: 24,
+                      ),
+                      maxLines: 1,
+                    ),
+                  ),
+                ),
+                FavoriteButton(
+                  iconSize: 50,
+                  isFavorite: true,
+                  iconColor: Colors.deepPurple,
+                  valueChanged: (_isFavorite) {
+                    print('Is Favorite : $_isFavorite');
+                  },
+                ),
+              ],
             ),
             Container(
               alignment: Alignment.topLeft,
