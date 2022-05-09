@@ -77,13 +77,14 @@ class _HomePageState extends State<HomePage> {
                                 },
                                 splashColor: MyColors.primarydark,
                                 child: ListTile(
-                                  title: AutoSizeText(
+                                  title: Text(
                                     "${homeController.allRecipesName.recipesName![index]}",
                                     style: TextStyle(
+                                      overflow:TextOverflow.ellipsis,
                                       color: MyColors.primarydark,
                                       fontFamily:
                                           GoogleFonts.ptSerif().fontFamily,
-                                      fontSize: 24,
+                                      fontSize: 18,
                                     ),
                                     maxLines: 1,
                                   ),
