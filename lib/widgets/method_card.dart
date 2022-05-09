@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mais_receitas/data/get_recipe.dart';
 import 'package:mais_receitas/design/my_colors.dart';
-import 'package:mais_receitas/design/my_theme.dart';
+// import 'package:mais_receitas/design/my_theme.dart';
 // import 'package:mais_receitas/design/my_colors.dart';
 
 class MethodCard extends StatefulWidget {
@@ -43,7 +43,7 @@ class _MethodCardState extends State<MethodCard> {
                 ),
                 FavoriteButton(
                   iconSize: 50,
-                  isFavorite: true,
+                  isFavorite: false,
                   iconColor: Colors.deepPurple,
                   valueChanged: (_isFavorite) {
                     print('Is Favorite : $_isFavorite');
