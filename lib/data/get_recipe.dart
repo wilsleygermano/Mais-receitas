@@ -2,18 +2,20 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-Future getRecipe(String choosedRecipe) async {
+Future<Recipe?> getRecipe(String choosedRecipe) async {
+  Recipe? recipe;
   try {
     final dio = Dio();
     var url =
         'https://afrodite-recipe.herokuapp.com/api/v0/recipes?recipe=${choosedRecipe}';
     var response = await dio.get(url);
     final json = response.data;
-    final recipe = Recipe.fromJson(json as Map<String, dynamic>);
+    recipe = Recipe.fromJson(json as Map<String, dynamic>);
     return recipe;
   } on DioError catch (e) {
     debugPrint("${e.error}");
   }
+  return recipe;
 }
 
 class Recipe {

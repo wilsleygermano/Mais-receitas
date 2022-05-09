@@ -2,14 +2,20 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mais_receitas/data/get_recipe.dart';
 import 'package:mais_receitas/design/my_colors.dart';
 import 'package:mais_receitas/design/my_theme.dart';
 // import 'package:mais_receitas/design/my_colors.dart';
 
-class MethodCard extends StatelessWidget {
+class MethodCard extends StatefulWidget {
   final String recipeName;
   const MethodCard({required this.recipeName, Key? key}) : super(key: key);
 
+  @override
+  State<MethodCard> createState() => _MethodCardState();
+}
+
+class _MethodCardState extends State<MethodCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -25,7 +31,7 @@ class MethodCard extends StatelessWidget {
                   child: Container(
                     alignment: Alignment.topLeft,
                     child: AutoSizeText(
-                      recipeName,
+                      widget.recipeName,
                       style: TextStyle(
                         color: MyColors.primarydark,
                         fontFamily: GoogleFonts.ptSerif().fontFamily,
@@ -56,139 +62,61 @@ class MethodCard extends StatelessWidget {
                 ),
               ),
             ),
-            ListView(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              children: <Widget>[
-                Card(
-                  elevation: 0,
-                  child: ListTile(
-                    title: const Text("200 g de polvo em pedaços"),
-                    tileColor: MyColors.primarylight,
-                    leading: Container(
-                      height: 32,
-                      width: 34,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("lib/images/lead_icon.png"),
+            FutureBuilder<Recipe?>(
+              future: getRecipe(widget.recipeName),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                    itemCount: snapshot.data!.recipes!.secao![0].conteudo!.length,
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        elevation: 0,
+                        child: ListTile(
+                          title: Text(
+                              snapshot.data!.recipes!.secao![0].conteudo![index]),
+                          tileColor: MyColors.primarylight,
+                          leading: Container(
+                            height: 32,
+                            width: 34,
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage("lib/images/lead_icon.png"),
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
+                      );
+                    },
+                  );
+                }
+                if (snapshot.hasError) {
+                  return Dialog(
+                    backgroundColor: Colors.white,
+                    elevation: 8,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
                     ),
-                  ),
-                ),
-                Card(
-                  elevation: 0,
-                  child: ListTile(
-                    title: const Text("200 g de polvo em pedaços"),
-                    tileColor: MyColors.primarylight,
-                    leading: Container(
-                      height: 32,
-                      width: 34,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("lib/images/lead_icon.png"),
-                        ),
-                      ),
+                    child: ElevatedButton(
+                      child: const Text("Try again"),
+                      onPressed: () {
+                        // setState(
+                        //   () {
+                        //     recipe;
+                        //   },
+                        // );
+                      },
                     ),
+                  );
+                }
+                return const Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.purple,
+                    strokeWidth: 8.0,
                   ),
-                ),
-                Card(
-                  elevation: 0,
-                  child: ListTile(
-                    title: const Text("200 g de polvo em pedaços"),
-                    tileColor: MyColors.primarylight,
-                    leading: Container(
-                      height: 32,
-                      width: 34,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("lib/images/lead_icon.png"),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Card(
-                  elevation: 0,
-                  child: ListTile(
-                    title: const Text("200 g de polvo em pedaços"),
-                    tileColor: MyColors.primarylight,
-                    leading: Container(
-                      height: 32,
-                      width: 34,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("lib/images/lead_icon.png"),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Card(
-                  elevation: 0,
-                  child: ListTile(
-                    title: const Text("200 g de polvo em pedaços"),
-                    tileColor: MyColors.primarylight,
-                    leading: Container(
-                      height: 32,
-                      width: 34,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("lib/images/lead_icon.png"),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Card(
-                  elevation: 0,
-                  child: ListTile(
-                    title: const Text("200 g de polvo em pedaços"),
-                    tileColor: MyColors.primarylight,
-                    leading: Container(
-                      height: 32,
-                      width: 34,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("lib/images/lead_icon.png"),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Card(
-                  elevation: 0,
-                  child: ListTile(
-                    title: const Text("200 g de polvo em pedaços"),
-                    tileColor: MyColors.primarylight,
-                    leading: Container(
-                      height: 32,
-                      width: 34,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("lib/images/lead_icon.png"),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Card(
-                  elevation: 0,
-                  child: ListTile(
-                    title: const Text("200 g de polvo em pedaços"),
-                    tileColor: MyColors.primarylight,
-                    leading: Container(
-                      height: 32,
-                      width: 34,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("lib/images/lead_icon.png"),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+                );
+              },
             ),
           ],
         ),
