@@ -36,7 +36,7 @@ class MethodCard extends StatelessWidget {
                 ),
                 FavoriteButton(
                   iconSize: 50,
-                  isFavorite: true,
+                  isFavorite: false,
                   iconColor: Colors.deepPurple,
                   valueChanged: (_isFavorite) {
                     print('Is Favorite : $_isFavorite');
