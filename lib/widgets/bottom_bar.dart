@@ -14,14 +14,17 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     return CurvedNavigationBar(
-      
       key: _bottomBarKey,
       index: 0,
       height: 60.0,
       items: const <Widget>[
-        Icon(Icons.favorite_border, size: 30,),
+        Icon(
+          Icons.favorite_border,
+          size: 30,
+        ),
         Icon(Icons.shuffle, size: 30),
         Icon(Icons.search, size: 30),
+        Icon(Icons.logout_outlined, size: 30),
       ],
       color: MyColors.primaryoriginal,
       buttonBackgroundColor: MyColors.primarydark,
