@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:mais_receitas/controller/get_favorite_recipes.dart';
 import 'package:mais_receitas/controller/home_controller.dart';
 import 'package:mais_receitas/data/user_model.dart';
 import 'package:mais_receitas/screens/recipes_page.dart';
@@ -19,6 +21,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late Box<String> favoriteRecipeBox;
+  late String userId;
+
   final homeController = HomeController();
   final loading = ValueNotifier(true);
 
@@ -28,6 +33,8 @@ class _HomePageState extends State<HomePage> {
       homeController.start();
       // loadReceitas();
     });
+        favoriteRecipeBox = Hive.box("favoriteBox2");
+    userId = favoriteRecipeBox.values.first;
     super.initState();
   }
 
@@ -68,6 +75,7 @@ class _HomePageState extends State<HomePage> {
                           
                           child: InkWell(
                             onTap: () {
+                              // getFavoriteRecipes(userId);
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(

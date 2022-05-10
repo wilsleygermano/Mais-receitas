@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mais_receitas/classes/my_dialog.dart';
 import 'package:mais_receitas/controller/home_controller.dart';
-import 'package:mais_receitas/controller/get_recipes_repository.dart';
 import 'package:mais_receitas/controller/get_user_signed_in.dart';
-import 'package:mais_receitas/data/user_model.dart';
 import 'package:mais_receitas/design/my_colors.dart';
 import 'package:mais_receitas/screens/signup_screen.dart';
 import 'package:mais_receitas/widgets/main_button.dart';
@@ -22,13 +20,16 @@ class _LoginScreenState extends State<LoginScreen> {
   final controller = HomeController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  Box<String> favoriteRecipeBox; 
+  late Box<String> favoriteRecipeBox;
 
   @override
   void initState() {
     setState(() {
       controller.start();
     });
+  
+
+    favoriteRecipeBox = Hive.box("favoriteBox2");
     super.initState();
   }
 
@@ -102,13 +103,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         buttonPressed: () async {
                           if (_emailController.text.isNotEmpty == true &&
                               _passwordController.text.isNotEmpty == true) {
-                            return await getUserSignedIn(
-                              _emailController.text.trim(),
-                              _passwordController.text,
-                              context,
-                            );
-
-                            
+                            return [
+                              await getUserSignedIn(
+                                  _emailController.text.trim(),
+                                  _passwordController.text,
+                                  context,
+                                  favoriteRecipeBox)
+                            ];
                           }
                           if (_emailController.text.isNotEmpty != true ||
                               _passwordController.text.isNotEmpty != true) {
@@ -124,8 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       MainButton(
                         labelText: "CADASTRAR",
-                        buttonPressed:  
-                        () => Navigator.push(
+                        buttonPressed: () => Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const SignupScreen(),
