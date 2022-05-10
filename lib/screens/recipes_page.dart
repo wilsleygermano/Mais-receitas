@@ -4,13 +4,17 @@ import 'package:mais_receitas/design/my_colors.dart';
 import 'package:mais_receitas/widgets/ingredient_card.dart';
 import 'package:mais_receitas/widgets/method_card.dart';
 
+import '../data/user_model.dart';
 import '../widgets/bottom_bar.dart';
 import '../widgets/return_button.dart';
 
 class RecipesPage extends StatefulWidget {
   final String recipesName;
+  final UserModel user;
+  
 
-  const RecipesPage({required this.recipesName, Key? key}) : super(key: key);
+
+  const RecipesPage({required this.recipesName, Key? key, required this.user}) : super(key: key);
 
   @override
   State<RecipesPage> createState() => _RecipesPageState();
@@ -33,7 +37,7 @@ class _RecipesPageState extends State<RecipesPage> {
   void initState() {
     _scrollController = ScrollController();
     cardList = <Widget>[
-      MethodCard(
+      MethodCard(user: widget.user,
         recipeName: widget.recipesName,
       ),
       IngredientCard(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mais_receitas/controller/home_controller.dart';
+import 'package:mais_receitas/data/user_model.dart';
 import 'package:mais_receitas/screens/recipes_page.dart';
 import 'package:mais_receitas/widgets/my_sliver_app_bar.dart';
 
@@ -9,8 +10,9 @@ import '../widgets/bottom_bar.dart';
 
 class HomePage extends StatefulWidget {
   
+  final UserModel user;
   
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key, required this.user}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -69,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: ((context) => RecipesPage(
+                                  builder: ((context) => RecipesPage(user: widget.user,
                                         recipesName: homeController
                                             .allRecipesName.recipesName![index],
                                       )),
