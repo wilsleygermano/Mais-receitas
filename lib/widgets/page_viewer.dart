@@ -37,7 +37,7 @@ class _PageViewerState extends State<PageViewer> {
       },
       children: <Widget>[
         HomePage(user: widget.user),
-        
+        RecipesPage(recipesName:"Hamburquibe", user: widget.user)
       ],
     );
   }
@@ -92,10 +92,9 @@ class _PageViewerState extends State<PageViewer> {
       animationCurve: Curves.easeInOut,
       animationDuration: const Duration(milliseconds: 600),
       onTap: (index) {
-        setState(() {
-          _page = index;
-        });
-      },
+            bottomTapped(index);
+          },
+      
       letIndexChange: (index) => true,
     ),
       body: buildPageView()
