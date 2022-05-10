@@ -63,7 +63,7 @@ class _IngredientCardState extends State<IngredientCard> {
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return ListView.builder(
-                    itemCount: snapshot.data!.recipes!.secao![1].conteudo!.length,
+                    itemCount: snapshot.data!.recipes!.preparo!.length,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
@@ -71,7 +71,7 @@ class _IngredientCardState extends State<IngredientCard> {
                         elevation: 0,
                         child: ListTile(
                           title: Text(
-                              snapshot.data!.recipes!.secao![1].conteudo![index]),
+                              snapshot.data!.recipes!.preparo![index]),
                           tileColor: MyColors.primarylight,
                           leading: Container(
                             height: 32,

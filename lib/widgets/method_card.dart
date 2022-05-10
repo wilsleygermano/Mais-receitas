@@ -88,13 +88,13 @@ class _MethodCardState extends State<MethodCard> {
                   recipeTitle = "${snapshot.data!.recipes!.nome}";
                   favoritedRecipe.addAll({
                     "recipeName": "${snapshot.data!.recipes!.nome}",
-                    "method": "${snapshot.data!.recipes!.secao![0].conteudo!}",
+                    "method": "${snapshot.data!.recipes!.preparo}",
                     "ingredients":
-                        "${snapshot.data!.recipes!.secao![1].conteudo!}",
+                        "${snapshot.data!.recipes!.ingredientes}",
                   });
                   return ListView.builder(
                     itemCount:
-                        snapshot.data!.recipes!.secao![0].conteudo!.length,
+                        snapshot.data!.recipes!.ingredientes!.length,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
@@ -102,7 +102,7 @@ class _MethodCardState extends State<MethodCard> {
                         elevation: 0,
                         child: ListTile(
                           title: Text(snapshot
-                              .data!.recipes!.secao![0].conteudo![index]),
+                              .data!.recipes!.ingredientes![index]),
                           tileColor: MyColors.primarylight,
                           leading: Container(
                             height: 32,
