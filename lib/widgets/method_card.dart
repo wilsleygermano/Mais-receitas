@@ -68,7 +68,7 @@ class _MethodCardState extends State<MethodCard> {
                   isFavorite: false,
                   iconColor: Colors.deepPurple,
                   valueChanged: (_isFavorite) async {
-                    await favoriteButtonPressed(recipeTitle, favoritedRecipe, widget.user.userToken.toString());
+                    await favoriteButtonPressed(recipeTitle, favoritedRecipe, widget.user.email.toString());
                   },
                 ),
               ],
