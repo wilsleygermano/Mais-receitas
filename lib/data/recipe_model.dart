@@ -18,71 +18,30 @@ class RecipeModel {
 }
 
 class RecipesModel {
-  Id? iId;
+  String? id;
   String? nome;
-  List<Secao>? secao;
+  List<String>? ingredientes;
+  List<String>? preparo;
+  List<String>? informacoes;
 
-  RecipesModel({this.iId, this.nome, this.secao});
+  RecipesModel(
+      {this.id, this.nome, this.ingredientes, this.preparo, this.informacoes});
 
   RecipesModel.fromJson(Map<String, dynamic> json) {
-    iId = json['_id'] != null ? Id.fromJson(json['_id']) : null;
+    id = json['id'];
     nome = json['nome'];
-    if (json['secao'] != null) {
-      secao = <Secao>[];
-      json['secao'].forEach((v) {
-        secao!.add(Secao.fromJson(v));
-      });
-    }
+    ingredientes = json['ingredientes'].cast<String>();
+    preparo = json['preparo'].cast<String>();
+    informacoes = json['informacoes'].cast<String>();
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = Map<String, dynamic>();
-    if (iId != null) {
-      data['_id'] = iId!.toJson();
-    }
+    data['id'] = id;
     data['nome'] = nome;
-    if (secao != null) {
-      data['secao'] = secao!.map((v) => v.toJson()).toList();
-    }
+    data['ingredientes'] = ingredientes;
+    data['preparo'] = preparo;
+    data['informacoes'] = informacoes;
     return data;
   }
 }
-
-class Id {
-  String? oid;
-
-  Id({this.oid});
-
-  Id.fromJson(Map<String, dynamic> json) {
-    oid = json['$oid'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['$oid'] = oid;
-    return data;
-  }
-}
-
-class Secao {
-  String? nome;
-  List<String>? conteudo;
-
-  Secao({this.nome, this.conteudo});
-
-  Secao.fromJson(Map<String, dynamic> json) {
-    nome = json['nome'];
-    conteudo = json['conteudo'].cast<String>();
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['nome'] = nome;
-    data['conteudo'] = conteudo;
-    return data;
-  }
-}
-
-
-
-
