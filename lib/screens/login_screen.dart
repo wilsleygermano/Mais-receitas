@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mais_receitas/classes/my_dialog.dart';
 import 'package:mais_receitas/controller/home_controller.dart';
 import 'package:mais_receitas/controller/get_recipes_repository.dart';
@@ -21,6 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final controller = HomeController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  Box<String> favoriteRecipeBox; 
 
   @override
   void initState() {
@@ -100,12 +102,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         buttonPressed: () async {
                           if (_emailController.text.isNotEmpty == true &&
                               _passwordController.text.isNotEmpty == true) {
-                            return await [getUserSignedIn(
+                            return await getUserSignedIn(
                               _emailController.text.trim(),
                               _passwordController.text,
                               context,
-                            ),
-                            ];
+                            );
+
+                            
                           }
                           if (_emailController.text.isNotEmpty != true ||
                               _passwordController.text.isNotEmpty != true) {
