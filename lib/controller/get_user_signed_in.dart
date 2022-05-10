@@ -5,6 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mais_receitas/classes/my_dialog.dart';
 import 'package:mais_receitas/data/user_model.dart';
 import 'package:mais_receitas/screens/home_page.dart';
+import 'package:mais_receitas/widgets/page_viewer.dart';
 
 Future getUserSignedIn(
   String email,
@@ -33,7 +34,7 @@ Future getUserSignedIn(
       () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => HomePage(
+          builder: (context) => PageViewer(
             user: user,
           ),
         ),

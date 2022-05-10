@@ -18,6 +18,7 @@ class _BottomBarState extends State<BottomBar> {
       index: 0,
       height: 60.0,
       items: const <Widget>[
+        
         Icon(
           Icons.favorite_border,
           size: 30,

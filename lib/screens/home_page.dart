@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      bottomNavigationBar: BottomBar(),
+     
       body: FutureBuilder(
         future: homeController.start(),
         builder: ((context, snapshot) {
