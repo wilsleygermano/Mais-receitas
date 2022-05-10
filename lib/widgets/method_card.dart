@@ -1,21 +1,40 @@
+import 'dart:async';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mais_receitas/data/get_recipe.dart';
+import 'package:mais_receitas/controller/favorite_button_pressed.dart';
+import 'package:mais_receitas/controller/get_recipe.dart';
+import 'package:mais_receitas/data/recipe_model.dart';
 import 'package:mais_receitas/design/my_colors.dart';
-// import 'package:mais_receitas/design/my_theme.dart';
-// import 'package:mais_receitas/design/my_colors.dart';
+
 
 class MethodCard extends StatefulWidget {
   final String recipeName;
-  const MethodCard({required this.recipeName, Key? key}) : super(key: key);
+  const MethodCard({
+    required this.recipeName,
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<MethodCard> createState() => _MethodCardState();
 }
 
 class _MethodCardState extends State<MethodCard> {
+  final dataBase = FirebaseFirestore.instance;
+  late String recipeTitle;
+  late Map<String, dynamic> favoritedRecipe = {};
+  late StreamSubscription<DocumentSnapshot> subscription;
+  late DocumentReference documentReference;
+
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -45,8 +64,8 @@ class _MethodCardState extends State<MethodCard> {
                   iconSize: 50,
                   isFavorite: false,
                   iconColor: Colors.deepPurple,
-                  valueChanged: (_isFavorite) {
-                    print('Is Favorite : $_isFavorite');
+                  valueChanged: (_isFavorite) async {
+                    await favoriteButtonPressed(recipeTitle, favoritedRecipe);
                   },
                 ),
               ],
@@ -62,20 +81,28 @@ class _MethodCardState extends State<MethodCard> {
                 ),
               ),
             ),
-            FutureBuilder<Recipe?>(
+            FutureBuilder<RecipeModel?>(
               future: getRecipe(widget.recipeName),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
+                  recipeTitle = "${snapshot.data!.recipes!.nome}";
+                  favoritedRecipe.addAll({
+                    "recipeName": "${snapshot.data!.recipes!.nome}",
+                    "method": "${snapshot.data!.recipes!.secao![0].conteudo!}",
+                    "ingredients":
+                        "${snapshot.data!.recipes!.secao![1].conteudo!}",
+                  });
                   return ListView.builder(
-                    itemCount: snapshot.data!.recipes!.secao![0].conteudo!.length,
+                    itemCount:
+                        snapshot.data!.recipes!.secao![0].conteudo!.length,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return Card(
                         elevation: 0,
                         child: ListTile(
-                          title: Text(
-                              snapshot.data!.recipes!.secao![0].conteudo![index]),
+                          title: Text(snapshot
+                              .data!.recipes!.secao![0].conteudo![index]),
                           tileColor: MyColors.primarylight,
                           leading: Container(
                             height: 32,
