@@ -7,14 +7,17 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mais_receitas/controller/favorite_button_pressed.dart';
 import 'package:mais_receitas/controller/get_recipe.dart';
 import 'package:mais_receitas/data/recipe_model.dart';
+import 'package:mais_receitas/data/user_model.dart';
 import 'package:mais_receitas/design/my_colors.dart';
 
 
 class MethodCard extends StatefulWidget {
+  final UserModel user;
   final String recipeName;
+
   const MethodCard({
     required this.recipeName,
-    Key? key,
+    Key? key, required this.user,
   }) : super(key: key);
 
   @override
@@ -65,7 +68,7 @@ class _MethodCardState extends State<MethodCard> {
                   isFavorite: false,
                   iconColor: Colors.deepPurple,
                   valueChanged: (_isFavorite) async {
-                    await favoriteButtonPressed(recipeTitle, favoritedRecipe);
+                    await favoriteButtonPressed(recipeTitle, favoritedRecipe, widget.user.userToken.toString());
                   },
                 ),
               ],
