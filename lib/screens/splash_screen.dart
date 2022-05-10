@@ -15,7 +15,7 @@ class _SplashState extends State<Splash> {
   Widget build(BuildContext context) {
     return SplashScreen(
         seconds: 4,
-        navigateAfterSeconds: HomePage(),
+        navigateAfterSeconds: LoginScreen(),
         imageBackground: const AssetImage("lib/images/splash.gif"),
         backgroundColor: Colors.transparent,
         styleTextUnderTheLoader: const TextStyle(),
