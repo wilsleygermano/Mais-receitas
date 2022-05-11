@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mais_receitas/design/my_colors.dart';
 
 class MySliverAppBar extends StatefulWidget {
   const MySliverAppBar({Key? key}) : super(key: key);
@@ -16,7 +17,21 @@ class _MySliverAppBarState extends State<MySliverAppBar> {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      elevation: 0,
+      leading: IconButton(
+        iconSize: 32,
+        onPressed: () {},
+        icon: const Icon(Icons.menu),
+        color: MyColors.primarydark
+      ),
+      actions: [
+        IconButton(
+          iconSize: 32,
+          onPressed: () {},
+          icon: const Icon(Icons.search),
+          color: MyColors.primarydark,
+        ),
+      ],
+      // elevation: 0,
       stretch: true,
       pinned:  _pinned,
       floating: _floating,

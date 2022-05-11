@@ -39,9 +39,8 @@ class _PageViewerState extends State<PageViewer> {
       },
       children: <Widget>[
         HomeScreen(),
+        RandomScreen(user: widget.user,),
         FavoriteScreen(),
-         RandomScreen(user: widget.user,),
-        LogoutScreen(user: widget.user),
       ],
     );
   }
@@ -83,10 +82,8 @@ class _PageViewerState extends State<PageViewer> {
           height: 60.0,
           items: const <Widget>[
             Icon(Icons.home_outlined, size: 30),
-            Icon(Icons.favorite_border, size: 30),
             Icon(Icons.shuffle, size: 30),
-            Icon(Icons.search, size: 30),
-            Icon(Icons.logout_outlined, size: 30),
+            Icon(Icons.favorite_border, size: 30),
           ],
           color: MyColors.primaryoriginal,
           buttonBackgroundColor: MyColors.primarydark,
