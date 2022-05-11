@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mais_receitas/data/favorite_model.dart';
 import 'package:mais_receitas/design/my_colors.dart';
-import 'package:mais_receitas/screens/recipes_page.dart';
+import 'package:mais_receitas/screens/recipes_screen.dart';
 
 import '../widgets/my_sliver_app_bar.dart';
 
@@ -76,7 +76,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                                 await Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: ((context) => RecipesPage(
+                                    builder: ((context) => RecipesScreen(
                                           recipesName:
                                               snapshot.data![index].nome!,
                                         )),
