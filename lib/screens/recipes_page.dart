@@ -52,7 +52,7 @@ class _RecipesPageState extends State<RecipesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomBar(),
+      
       backgroundColor: Colors.transparent,
       body: SafeArea(
         child: Center(
