@@ -69,7 +69,7 @@ class _RandomScreenState extends State<RandomScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Container(
-                                height:300,
+                                height: 300,
                                 width: 300,
                                 alignment: Alignment.center,
                                 decoration: const BoxDecoration(
@@ -83,6 +83,23 @@ class _RandomScreenState extends State<RandomScreen> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+                              // ElevatedButton(
+                              //   style: ButtonStyle(
+                                  
+                              //   ),
+                              //     onPressed: (() { homeController.allRecipesName.recipesName!
+                              //         .shuffle();
+                              //     Navigator.push(
+                              //       context,
+                              //       MaterialPageRoute(
+                              //         builder: ((context) => RecipesScreen(
+                              //               recipesName: homeController
+                              //                   .allRecipesName.recipesName![0],
+                              //             )),
+                              //       ),
+                              //     );}), 
+                              //     child: const Text(" CLIQUE AQUI")),
+
                               MainButton(
                                 labelText: "CLIQUE AQUI",
                                 buttonPressed: () {
@@ -98,7 +115,7 @@ class _RandomScreenState extends State<RandomScreen> {
                                     ),
                                   );
                                 },
-                              )
+                              ),
                             ],
                           )
                         ],
