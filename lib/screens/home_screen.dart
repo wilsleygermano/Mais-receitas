@@ -1,25 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:mais_receitas/controller/get_favorite_recipes.dart';
 import 'package:mais_receitas/controller/home_controller.dart';
-import 'package:mais_receitas/data/user_model.dart';
-import 'package:mais_receitas/screens/recipes_page.dart';
+import 'package:mais_receitas/screens/recipes_screen.dart';
 import 'package:mais_receitas/widgets/my_sliver_app_bar.dart';
 
 import '../design/my_colors.dart';
-import '../widgets/bottom_bar.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomeScreenState extends State<HomeScreen> {
   late Box<String> favoriteRecipeBox;
   late String userId;
 
@@ -75,7 +72,7 @@ class _HomePageState extends State<HomePage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: ((context) => RecipesPage(
+                                  builder: ((context) => RecipesScreen(
                                         recipesName: homeController
                                             .allRecipesName.recipesName![index],
                                       )),

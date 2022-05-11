@@ -3,23 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:mais_receitas/design/my_colors.dart';
 import 'package:mais_receitas/widgets/ingredient_card.dart';
 import 'package:mais_receitas/widgets/method_card.dart';
-
-import '../data/user_model.dart';
-import '../widgets/bottom_bar.dart';
 import '../widgets/return_button.dart';
 
-class RecipesPage extends StatefulWidget {
+class RecipesScreen extends StatefulWidget {
   final String recipesName;
   
 
 
-  const RecipesPage({required this.recipesName, Key? key, }) : super(key: key);
+  const RecipesScreen({required this.recipesName, Key? key, }) : super(key: key);
 
   @override
-  State<RecipesPage> createState() => _RecipesPageState();
+  State<RecipesScreen> createState() => _RecipesScreenState();
 }
 
-class _RecipesPageState extends State<RecipesPage> {
+class _RecipesScreenState extends State<RecipesScreen> {
   late ScrollController _scrollController;
   late List cardList;
 
