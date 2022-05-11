@@ -11,10 +11,9 @@ import '../design/my_colors.dart';
 import '../widgets/bottom_bar.dart';
 
 class HomePage extends StatefulWidget {
-  
-  final UserModel user;
-  
-  const HomePage({Key? key, required this.user}) : super(key: key);
+  const HomePage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -33,7 +32,7 @@ class _HomePageState extends State<HomePage> {
       homeController.start();
       // loadReceitas();
     });
-        favoriteRecipeBox = Hive.box("favoriteBox2");
+    favoriteRecipeBox = Hive.box("favoriteBox2");
     userId = favoriteRecipeBox.values.first;
     super.initState();
   }
@@ -47,7 +46,6 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-     
       body: FutureBuilder(
         future: homeController.start(),
         builder: ((context, snapshot) {
@@ -72,14 +70,12 @@ class _HomePageState extends State<HomePage> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10)),
                           elevation: 0,
-                          
                           child: InkWell(
                             onTap: () {
-                              // getFavoriteRecipes(userId);
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: ((context) => RecipesPage(user: widget.user,
+                                  builder: ((context) => RecipesPage(
                                         recipesName: homeController
                                             .allRecipesName.recipesName![index],
                                       )),
