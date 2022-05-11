@@ -48,12 +48,12 @@ class RandomScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                          height: 150,
-                          width: 150,
+                          height: 300,
+                          width: 300,
                           alignment: Alignment.center,
                           decoration: const BoxDecoration(
                               image: DecorationImage(
-                            image: AssetImage('lib/images/beet.gif'),
+                            image: AssetImage('lib/images/random.gif'),
                             fit: BoxFit.fill,
                           )),
                         ),
