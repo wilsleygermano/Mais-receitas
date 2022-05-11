@@ -5,6 +5,7 @@ import 'package:mais_receitas/controller/home_controller.dart';
 import 'package:mais_receitas/data/user_model.dart';
 import 'package:mais_receitas/screens/home_page.dart';
 import 'package:mais_receitas/screens/logout_screen.dart';
+import 'package:mais_receitas/screens/random_screen.dart';
 import 'package:mais_receitas/screens/recipes_page.dart';
 import 'package:mais_receitas/widgets/my_sliver_app_bar.dart';
 
@@ -37,7 +38,8 @@ class _PageViewerState extends State<PageViewer> {
       },
       children: <Widget>[
         HomePage(user: widget.user),
-        LogoutScreen(user: widget.user)
+        const RandomScreen(),
+        LogoutScreen(user: widget.user),
       ],
     );
   }
@@ -78,10 +80,8 @@ class _PageViewerState extends State<PageViewer> {
           index: _page,
           height: 60.0,
           items: const <Widget>[
-            Icon(
-              Icons.favorite_border,
-              size: 30,
-            ),
+            Icon(Icons.home_outlined, size: 30),
+            Icon(Icons.favorite_border, size: 30),
             Icon(Icons.shuffle, size: 30),
             Icon(Icons.search, size: 30),
             Icon(Icons.logout_outlined, size: 30),
