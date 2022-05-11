@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mais_receitas/data/favorite_model.dart';
 import 'package:mais_receitas/design/my_colors.dart';
+import 'package:mais_receitas/screens/no_favorite_screen.dart';
 import 'package:mais_receitas/screens/recipes_screen.dart';
 
 import '../widgets/my_sliver_app_bar.dart';
@@ -129,7 +130,8 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: ElevatedButton(
-                    child: const Text("Something went wrong, please try again later"),
+                    child: const Text(
+                        "Something went wrong, please try again later"),
                     onPressed: () {
                       Navigator.pop(context);
                     },
@@ -137,6 +139,9 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                 );
               },
             );
+          }
+          if (!snapshot.hasData) {
+            return NoFavoriteScreen();
           }
           return const Center(
             child: CircularProgressIndicator(
