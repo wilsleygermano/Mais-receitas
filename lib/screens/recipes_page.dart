@@ -10,11 +10,10 @@ import '../widgets/return_button.dart';
 
 class RecipesPage extends StatefulWidget {
   final String recipesName;
-  final UserModel user;
   
 
 
-  const RecipesPage({required this.recipesName, Key? key, required this.user}) : super(key: key);
+  const RecipesPage({required this.recipesName, Key? key, }) : super(key: key);
 
   @override
   State<RecipesPage> createState() => _RecipesPageState();
@@ -37,7 +36,7 @@ class _RecipesPageState extends State<RecipesPage> {
   void initState() {
     _scrollController = ScrollController();
     cardList = <Widget>[
-      MethodCard(user: widget.user,
+      MethodCard(
         recipeName: widget.recipesName,
       ),
       IngredientCard(

@@ -12,12 +12,11 @@ import 'package:mais_receitas/design/my_colors.dart';
 
 
 class MethodCard extends StatefulWidget {
-  final UserModel user;
   final String recipeName;
 
   const MethodCard({
     required this.recipeName,
-    Key? key, required this.user,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -68,7 +67,7 @@ class _MethodCardState extends State<MethodCard> {
                   isFavorite: false,
                   iconColor: Colors.deepPurple,
                   valueChanged: (_isFavorite) async {
-                    await favoriteButtonPressed(recipeTitle, favoritedRecipe, widget.user.email.toString());
+                    await favoriteButtonPressed(recipeTitle, favoritedRecipe);
                   },
                 ),
               ],
@@ -90,10 +89,7 @@ class _MethodCardState extends State<MethodCard> {
                 if (snapshot.hasData) {
                   recipeTitle = "${snapshot.data!.recipes!.nome}";
                   favoritedRecipe.addAll({
-                    "recipeName": "${snapshot.data!.recipes!.nome}",
-                    "method": "${snapshot.data!.recipes!.preparo}",
-                    "ingredients":
-                        "${snapshot.data!.recipes!.ingredientes}",
+                    "nome": "${snapshot.data!.recipes!.nome}",
                   });
                   return ListView.builder(
                     itemCount:

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mais_receitas/controller/home_controller.dart';
 import 'package:mais_receitas/data/user_model.dart';
+import 'package:mais_receitas/screens/favorite_screen.dart';
 import 'package:mais_receitas/screens/home_page.dart';
 import 'package:mais_receitas/screens/logout_screen.dart';
 import 'package:mais_receitas/screens/random_screen.dart';
@@ -37,7 +38,8 @@ class _PageViewerState extends State<PageViewer> {
         pageChanged(index);
       },
       children: <Widget>[
-        HomePage(user: widget.user),
+        HomePage(),
+        FavoriteScreen(),
         const RandomScreen(),
         LogoutScreen(user: widget.user),
       ],
