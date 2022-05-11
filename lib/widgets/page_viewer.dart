@@ -4,15 +4,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mais_receitas/controller/home_controller.dart';
 import 'package:mais_receitas/data/user_model.dart';
 import 'package:mais_receitas/screens/home_page.dart';
+import 'package:mais_receitas/screens/logout_screen.dart';
 import 'package:mais_receitas/screens/recipes_page.dart';
 import 'package:mais_receitas/widgets/my_sliver_app_bar.dart';
 
 import '../design/my_colors.dart';
 
 class PageViewer extends StatefulWidget {
-  
   final UserModel user;
-  
+
   const PageViewer({Key? key, required this.user}) : super(key: key);
 
   @override
@@ -37,7 +37,7 @@ class _PageViewerState extends State<PageViewer> {
       },
       children: <Widget>[
         HomePage(user: widget.user),
-        RecipesPage(recipesName:"Hamburquibe", user: widget.user)
+        LogoutScreen(user: widget.user)
       ],
     );
   }
@@ -73,31 +73,29 @@ class _PageViewerState extends State<PageViewer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
-      bottomNavigationBar: CurvedNavigationBar(
-      index: _page,
-      height: 60.0,
-      items: const <Widget>[
-        Icon(
-          Icons.favorite_border,
-          size: 30,
-        ),
-        Icon(Icons.shuffle, size: 30),
-        Icon(Icons.search, size: 30),
-        Icon(Icons.logout_outlined, size: 30),
-      ],
-      color: MyColors.primaryoriginal,
-      buttonBackgroundColor: MyColors.primarydark,
-      backgroundColor: MyColors.primarylight,
-      animationCurve: Curves.easeInOut,
-      animationDuration: const Duration(milliseconds: 600),
-      onTap: (index) {
+        backgroundColor: Colors.transparent,
+        bottomNavigationBar: CurvedNavigationBar(
+          index: _page,
+          height: 60.0,
+          items: const <Widget>[
+            Icon(
+              Icons.favorite_border,
+              size: 30,
+            ),
+            Icon(Icons.shuffle, size: 30),
+            Icon(Icons.search, size: 30),
+            Icon(Icons.logout_outlined, size: 30),
+          ],
+          color: MyColors.primaryoriginal,
+          buttonBackgroundColor: MyColors.primarydark,
+          backgroundColor: MyColors.primarylight,
+          animationCurve: Curves.easeInOut,
+          animationDuration: const Duration(milliseconds: 600),
+          onTap: (index) {
             bottomTapped(index);
           },
-      
-      letIndexChange: (index) => true,
-    ),
-      body: buildPageView()
-    );
+          letIndexChange: (index) => true,
+        ),
+        body: buildPageView());
   }
 }
