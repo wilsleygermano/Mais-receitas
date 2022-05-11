@@ -40,7 +40,7 @@ class _PageViewerState extends State<PageViewer> {
       children: <Widget>[
         HomeScreen(),
         FavoriteScreen(),
-        const RandomScreen(),
+         RandomScreen(user: widget.user,),
         LogoutScreen(user: widget.user),
       ],
     );
