@@ -36,7 +36,65 @@ class RecipesSearch extends SearchDelegate<RecipesNameModel> {
 
   @override
   Widget buildResults(BuildContext context) {
-    return Container();
+   return FutureBuilder(future: future, builder: (context, snapshot) {
+      if (snapshot.connectionState == ConnectionState.done) {
+        final results = controller.allRecipesName.recipesName!.where((a) => a.toLowerCase().contains(query));
+                    return ListView(
+                      children:results.map<Card>((a) => Card(
+                          color: MyColors.primarylight,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          elevation: 0,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: ((context) => RecipesScreen(
+                                        recipesName: a,
+                                      )),
+                                ),
+                              );
+                            },
+                            splashColor: MyColors.primarydark,
+                            child: ListTile(
+                              title: Text(
+                                a,
+                                style: TextStyle(
+                                  overflow: TextOverflow.ellipsis,
+                                  color: MyColors.primarydark,
+                                  fontFamily: GoogleFonts.ptSerif().fontFamily,
+                                  fontSize: 18,
+                                ),
+                                maxLines: 1,
+                              ),
+                              leading: Container(
+                                height: 32,
+                                width: 34,
+                                decoration: const BoxDecoration(
+                                  image: DecorationImage(
+                                    image:
+                                        AssetImage("lib/images/lead_icon.png"),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        )).toList() ,
+                    );
+                  }
+                  if (snapshot.connectionState == ConnectionState.none) {
+                    return Center(
+                      child: Text("Something went wrong"),
+                    );
+                  }
+                  return const Center(
+                    child: CircularProgressIndicator(
+                      color: Colors.purple,
+                      strokeWidth: 8.0,
+                    ),
+                  );
+    });
   }
 
   @override
@@ -104,17 +162,3 @@ class RecipesSearch extends SearchDelegate<RecipesNameModel> {
 }
 
 
-// ListTile(
-//                         title: Text(a),
-//                         leading: Container(
-//                                 height: 32,
-//                                 width: 34,
-//                                 decoration: const BoxDecoration(
-//                                   image: DecorationImage(
-//                                     image:
-//                                         AssetImage("lib/images/lead_icon.png"),
-//                                   ),
-//                                 ),
-//                               ),
-//                         tileColor: MyColors.primarylight,
-//                       )
