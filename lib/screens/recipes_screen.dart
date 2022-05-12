@@ -7,10 +7,11 @@ import '../widgets/return_button.dart';
 
 class RecipesScreen extends StatefulWidget {
   final String recipesName;
+  final bool? isFavorited;
   
 
 
-  const RecipesScreen({required this.recipesName, Key? key, }) : super(key: key);
+  const RecipesScreen({required this.recipesName, Key? key, this.isFavorited, }) : super(key: key);
 
   @override
   State<RecipesScreen> createState() => _RecipesScreenState();
@@ -35,6 +36,7 @@ class _RecipesScreenState extends State<RecipesScreen> {
     cardList = <Widget>[
       MethodCard(
         recipeName: widget.recipesName,
+        isFavorited: widget.isFavorited,
       ),
       IngredientCard(
         recipeName: widget.recipesName,

@@ -1,21 +1,21 @@
-import 'dart:async';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mais_receitas/controller/check_favorite.dart';
 import 'package:mais_receitas/controller/favorite_button_pressed.dart';
 import 'package:mais_receitas/controller/get_recipe.dart';
 import 'package:mais_receitas/data/recipe_model.dart';
-import 'package:mais_receitas/data/user_model.dart';
 import 'package:mais_receitas/design/my_colors.dart';
 
 class MethodCard extends StatefulWidget {
   final String recipeName;
+  final bool? isFavorited;
 
   const MethodCard({
     required this.recipeName,
-    Key? key,
+    Key? key, this.isFavorited,
   }) : super(key: key);
 
   @override
@@ -26,13 +26,9 @@ class _MethodCardState extends State<MethodCard> {
   final dataBase = FirebaseFirestore.instance;
   late String recipeTitle;
   late Map<String, dynamic> favoritedRecipe = {};
-  late StreamSubscription<DocumentSnapshot> subscription;
-  late DocumentReference documentReference;
+  late bool isFavorited = false;
 
-  @override
-  void initState() {
-    super.initState();
-  }
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -61,10 +57,10 @@ class _MethodCardState extends State<MethodCard> {
                 ),
                 FavoriteButton(
                   iconSize: 50,
-                  isFavorite: false,
+                  isFavorite: widget.isFavorited,
                   iconColor: Colors.deepPurple,
-                  valueChanged: (_isFavorite) async {
-                    await favoriteButtonPressed(recipeTitle, favoritedRecipe);
+                  valueChanged: (_isFavorited) async {
+                    await favoriteButtonPressed(recipeTitle, favoritedRecipe, context);
                   },
                 ),
               ],
