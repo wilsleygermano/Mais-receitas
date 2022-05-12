@@ -27,8 +27,6 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       controller.start();
     });
-  
-
     favoriteRecipeBox = Hive.box("favoriteBox2");
     super.initState();
   }

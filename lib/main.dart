@@ -9,6 +9,5 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await Hive.initFlutter();
   await Hive.openBox<String>("favoriteBox2");
-
   runApp(const MaisReceitas());
 }
