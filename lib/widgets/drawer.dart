@@ -24,6 +24,15 @@ class MyDrawer extends StatelessWidget {
             ListTile(
               title: Padding(
                 padding: const EdgeInsets.only(top: 8, left: 16),
+                child: Container(
+                  child: ,
+                ),
+              ),
+            ),
+            const SizedBox(height: 24,),
+            ListTile(
+              title: Padding(
+                padding: const EdgeInsets.only(top: 8, left: 16),
                 child: MainButton(
                   labelText: "SOBRE",
                   buttonPressed: () => Navigator.push(

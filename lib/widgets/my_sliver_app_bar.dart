@@ -33,7 +33,7 @@ class _MySliverAppBarState extends State<MySliverAppBar> {
     return SliverAppBar(
       leading: IconButton(
           iconSize: 32,
-          onPressed: () {},
+          onPressed: () => Scaffold.of(context).openDrawer(),
           icon: const Icon(Icons.menu),
           color: MyColors.primarydark),
       actions: [
