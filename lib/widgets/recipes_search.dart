@@ -43,57 +43,49 @@ class RecipesSearch extends SearchDelegate<RecipesNameModel> {
   Widget buildSuggestions(BuildContext context) {
     return FutureBuilder(future: future, builder: (context, snapshot) {
       if (snapshot.connectionState == ConnectionState.done) {
-                    return Scrollbar(
-                      isAlwaysShown: false,
-                      child: ListView.builder(
-                        itemCount:
-                            controller.allRecipesName.recipesName!.length,
-                        itemBuilder: (context, index) {
-                          return Card(
-                            color: MyColors.primarylight,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                            elevation: 0,
-                            child: InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: ((context) => RecipesScreen(
-                                          recipesName: controller.allRecipesName
-                                              .recipesName![index],
-                                        )),
-                                  ),
-                                );
-                              },
-                              splashColor: MyColors.primarydark,
-                              child: ListTile(
-                                title: Text(
-                                  controller.allRecipesName.recipesName![index],
-                                  style: TextStyle(
-                                    overflow: TextOverflow.ellipsis,
-                                    color: MyColors.primarydark,
-                                    fontFamily:
-                                        GoogleFonts.ptSerif().fontFamily,
-                                    fontSize: 18,
-                                  ),
-                                  maxLines: 1,
+        final results = controller.allRecipesName.recipesName!.where((a) => a.toLowerCase().contains(query));
+                    return ListView(
+                      children:results.map<Card>((a) => Card(
+                          color: MyColors.primarylight,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          elevation: 0,
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: ((context) => RecipesScreen(
+                                        recipesName: a,
+                                      )),
                                 ),
-                                leading: Container(
-                                  height: 32,
-                                  width: 34,
-                                  decoration: const BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          "lib/images/lead_icon.png"),
-                                    ),
+                              );
+                            },
+                            splashColor: MyColors.primarydark,
+                            child: ListTile(
+                              title: Text(
+                                a,
+                                style: TextStyle(
+                                  overflow: TextOverflow.ellipsis,
+                                  color: MyColors.primarydark,
+                                  fontFamily: GoogleFonts.ptSerif().fontFamily,
+                                  fontSize: 18,
+                                ),
+                                maxLines: 1,
+                              ),
+                              leading: Container(
+                                height: 32,
+                                width: 34,
+                                decoration: const BoxDecoration(
+                                  image: DecorationImage(
+                                    image:
+                                        AssetImage("lib/images/lead_icon.png"),
                                   ),
                                 ),
                               ),
                             ),
-                          );
-                        },
-                      ),
+                          ),
+                        )).toList() ,
                     );
                   }
                   if (snapshot.connectionState == ConnectionState.none) {
@@ -110,3 +102,19 @@ class RecipesSearch extends SearchDelegate<RecipesNameModel> {
     });
   }
 }
+
+
+// ListTile(
+//                         title: Text(a),
+//                         leading: Container(
+//                                 height: 32,
+//                                 width: 34,
+//                                 decoration: const BoxDecoration(
+//                                   image: DecorationImage(
+//                                     image:
+//                                         AssetImage("lib/images/lead_icon.png"),
+//                                   ),
+//                                 ),
+//                               ),
+//                         tileColor: MyColors.primarylight,
+//                       )
