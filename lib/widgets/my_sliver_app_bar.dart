@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mais_receitas/controller/home_controller.dart';
 import 'package:mais_receitas/data/recipes_name_model.dart';
 import 'package:mais_receitas/design/my_colors.dart';
+import 'package:mais_receitas/widgets/drawer.dart';
 import 'package:mais_receitas/screens/recipes_screen.dart';
 import 'package:mais_receitas/widgets/recipes_search.dart';
 
@@ -32,7 +33,7 @@ class _MySliverAppBarState extends State<MySliverAppBar> {
     return SliverAppBar(
       leading: IconButton(
           iconSize: 32,
-          onPressed: () {},
+          onPressed: () => Scaffold.of(context).openDrawer(),
           icon: const Icon(Icons.menu),
           color: MyColors.primarydark),
       actions: [
@@ -59,9 +60,9 @@ class _MySliverAppBarState extends State<MySliverAppBar> {
       snap: _snap,
       expandedHeight: 250,
       backgroundColor: Colors.transparent,
-      flexibleSpace: FlexibleSpaceBar(
-        titlePadding: const EdgeInsets.only(top: 64),
-        title: const Padding(
+      flexibleSpace: const FlexibleSpaceBar(
+        titlePadding: EdgeInsets.only(top: 64),
+        title:  Padding(
           padding: EdgeInsets.only(
             top: 8,
             left: 8,

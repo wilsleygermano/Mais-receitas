@@ -71,7 +71,13 @@ class _IngredientCardState extends State<IngredientCard> {
                         elevation: 0,
                         child: ListTile(
                           title: Text(
-                              snapshot.data!.recipes!.preparo![index]),
+                              snapshot.data!.recipes!.preparo![index],style: TextStyle(
+                              color: MyColors.primarydark,
+                              fontFamily: GoogleFonts.ptSerif().fontFamily,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                               
+                            )),
                           tileColor: MyColors.primarylight,
                           leading: Container(
                             height: 32,
