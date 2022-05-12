@@ -97,7 +97,15 @@ class _MethodCardState extends State<MethodCard> {
                         elevation: 0,
                         child: ListTile(
                           title: Text(
-                              snapshot.data!.recipes!.ingredientes![index]),
+                            snapshot.data!.recipes!.ingredientes![index],
+                            style: TextStyle(
+                              color: MyColors.primarydark,
+                              fontFamily: GoogleFonts.ptSerif().fontFamily,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                               
+                            ),
+                          ),
                           tileColor: MyColors.primarylight,
                           leading: Container(
                             height: 32,
