@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:mais_receitas/classes/my_dialog.dart';
 
 Future favoriteButtonPressed(String docName, Map<String, dynamic> mapContent,
     BuildContext myContext) async {

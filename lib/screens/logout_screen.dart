@@ -67,7 +67,7 @@ class LogoutScreen extends StatelessWidget {
                           buttonPressed: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => HomeScreen(),
+                              builder: (context) => const HomeScreen(),
                             ),
                           ),
                         ),

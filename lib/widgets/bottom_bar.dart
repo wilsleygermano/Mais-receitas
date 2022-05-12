@@ -3,13 +3,16 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:mais_receitas/design/my_colors.dart';
 
 class BottomBar extends StatefulWidget {
+  const BottomBar({Key? key}) : super(key: key);
+
   @override
   _BottomBarState createState() => _BottomBarState();
 }
 
 class _BottomBarState extends State<BottomBar> {
+  // ignore: unused_field
   int _page = 0;
-  GlobalKey<CurvedNavigationBarState> _bottomBarKey = GlobalKey();
+  final GlobalKey<CurvedNavigationBarState> _bottomBarKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +34,7 @@ class _BottomBarState extends State<BottomBar> {
       buttonBackgroundColor: MyColors.primarydark,
       backgroundColor: MyColors.primarylight,
       animationCurve: Curves.easeInOut,
-      animationDuration: Duration(milliseconds: 600),
+      animationDuration: const Duration(milliseconds: 600),
       onTap: (index) {
         setState(() {
           _page = index;

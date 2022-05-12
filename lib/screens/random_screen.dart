@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:mais_receitas/controller/home_controller.dart';
 import 'package:mais_receitas/data/user_model.dart';
-import 'package:mais_receitas/screens/login_screen.dart';
 import 'package:mais_receitas/screens/recipes_screen.dart';
 import 'package:mais_receitas/widgets/main_button.dart';
-import 'package:mais_receitas/widgets/page_viewer.dart';
 
 class RandomScreen extends StatefulWidget {
   final UserModel user;

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_collection_literals
+
 class UserModel {
   String? id;
   String? firstName;

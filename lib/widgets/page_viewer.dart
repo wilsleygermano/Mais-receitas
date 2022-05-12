@@ -1,14 +1,10 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:mais_receitas/controller/home_controller.dart';
 import 'package:mais_receitas/data/user_model.dart';
 import 'package:mais_receitas/screens/favorite_screen.dart';
 import 'package:mais_receitas/screens/home_screen.dart';
-import 'package:mais_receitas/screens/logout_screen.dart';
 import 'package:mais_receitas/screens/random_screen.dart';
-import 'package:mais_receitas/screens/recipes_screen.dart';
-import 'package:mais_receitas/widgets/my_sliver_app_bar.dart';
 
 import '../design/my_colors.dart';
 
@@ -38,9 +34,9 @@ class _PageViewerState extends State<PageViewer> {
         pageChanged(index);
       },
       children: <Widget>[
-        HomeScreen(),
+        const HomeScreen(),
         RandomScreen(user: widget.user,),
-        FavoriteScreen(),
+        const FavoriteScreen(),
       ],
     );
   }

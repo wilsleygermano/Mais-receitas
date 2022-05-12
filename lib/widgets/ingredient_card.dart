@@ -1,7 +1,5 @@
-import 'dart:ui';
 
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mais_receitas/data/recipe_model.dart';
@@ -41,6 +39,7 @@ class _IngredientCardState extends State<IngredientCard> {
               ),
             ),
 
+            // ignore: sized_box_for_whitespace
             Container(
               width: MediaQuery.of(context).size.width,
               child: Column(

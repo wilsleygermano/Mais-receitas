@@ -16,7 +16,7 @@ class RecipesSearch extends SearchDelegate<RecipesNameModel> {
   List<Widget>? buildActions(BuildContext context) {
     return [
       IconButton(
-        icon: Icon(
+        icon: const Icon(
           Icons.clear,
           color: MyColors.primarydark,
         ),
@@ -33,7 +33,7 @@ class RecipesSearch extends SearchDelegate<RecipesNameModel> {
       onPressed: () {
         close(context, RecipesNameModel());
       },
-      icon: Icon(
+      icon: const Icon(
         Icons.arrow_back,
         color: MyColors.primarydark,
       ),
@@ -94,7 +94,7 @@ class RecipesSearch extends SearchDelegate<RecipesNameModel> {
             );
           }
           if (snapshot.connectionState == ConnectionState.none) {
-            return Center(
+            return const Center(
               child: Text("Something went wrong"),
             );
           }
@@ -163,7 +163,7 @@ class RecipesSearch extends SearchDelegate<RecipesNameModel> {
             );
           }
           if (snapshot.connectionState == ConnectionState.none) {
-            return Center(
+            return const Center(
               child: Text("Something went wrong"),
             );
           }

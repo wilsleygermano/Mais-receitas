@@ -63,7 +63,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                 ),
                 CustomScrollView(
                   slivers: <Widget>[
-                    MySliverAppBar(),
+                    const MySliverAppBar(),
                     SliverList(
                       delegate: SliverChildBuilderDelegate(
                         (BuildContext context, int index) {
@@ -141,7 +141,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
             );
           }
           if (!snapshot.hasData) {
-            return NoFavoriteScreen();
+            return const NoFavoriteScreen();
           }
           return const Center(
             child: CircularProgressIndicator(

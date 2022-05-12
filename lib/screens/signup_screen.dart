@@ -97,7 +97,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       textInputActionField: TextInputAction.next,
                       controller: _passwordController,
                       hintText: "Senha",
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.key,
                         color: MyColors.primarydark,
                       ),
@@ -106,7 +106,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       textInputActionField: TextInputAction.done,
                       controller: _passwordConfirmationController,
                       hintText: "Confirme sua Senha",
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.key,
                         color: MyColors.primarydark,
                       ),

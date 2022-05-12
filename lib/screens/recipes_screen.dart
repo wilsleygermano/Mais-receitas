@@ -18,7 +18,6 @@ class RecipesScreen extends StatefulWidget {
 }
 
 class _RecipesScreenState extends State<RecipesScreen> {
-  late ScrollController _scrollController;
   late List cardList;
 
   int _currentIndex = 0;
@@ -32,7 +31,6 @@ class _RecipesScreenState extends State<RecipesScreen> {
 
   @override
   void initState() {
-    _scrollController = ScrollController();
     cardList = <Widget>[
       MethodCard(
         recipeName: widget.recipesName,

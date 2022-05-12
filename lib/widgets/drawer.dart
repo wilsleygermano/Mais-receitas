@@ -1,8 +1,5 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:mais_receitas/design/my_colors.dart';
 import 'package:mais_receitas/screens/logout_screen.dart';
 
 import 'main_button.dart';

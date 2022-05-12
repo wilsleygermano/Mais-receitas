@@ -39,12 +39,12 @@ class _MyPasswordFieldState extends State<MyPasswordField> {
         decoration: InputDecoration(
           icon: widget.icon,
           hintText: widget.hintText,
-          enabledBorder: UnderlineInputBorder(
+          enabledBorder: const UnderlineInputBorder(
             borderSide: BorderSide(
               color: MyColors.primarydark,
             ),
           ),
-          focusedBorder: UnderlineInputBorder(
+          focusedBorder: const UnderlineInputBorder(
             borderSide: BorderSide(
               color: MyColors.primarydark,
             ),

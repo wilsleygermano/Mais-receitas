@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
       backgroundColor: Colors.transparent,
       body: FutureBuilder(
         future: homeController.start(),
@@ -61,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 CustomScrollView(
                   slivers: <Widget>[
-                    MySliverAppBar(),
+                    const MySliverAppBar(),
                     SliverList(
                       delegate: SliverChildBuilderDelegate(
                           (BuildContext context, int index) {
@@ -101,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             splashColor: MyColors.primarydark,
                             child: ListTile(
                               title: Text(
-                                "${homeController.allRecipesName.recipesName![index]}",
+                                homeController.allRecipesName.recipesName![index],
                                 style: TextStyle(
                                   overflow: TextOverflow.ellipsis,
                                   color: MyColors.primarydark,

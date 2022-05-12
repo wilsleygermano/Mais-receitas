@@ -1,5 +1,6 @@
+// ignore_for_file: import_of_legacy_library_into_null_safe
+
 import 'package:flutter/material.dart';
-import 'package:mais_receitas/screens/home_screen.dart';
 import 'package:mais_receitas/screens/login_screen.dart';
 import 'package:splashscreen/splashscreen.dart';
 
@@ -15,7 +16,7 @@ class _SplashState extends State<Splash> {
   Widget build(BuildContext context) {
     return SplashScreen(
         seconds: 4,
-        navigateAfterSeconds: LoginScreen(),
+        navigateAfterSeconds: const LoginScreen(),
         imageBackground: const AssetImage("lib/images/splash.gif"),
         backgroundColor: Colors.transparent,
         styleTextUnderTheLoader: const TextStyle(),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import '../design/my_colors.dart';
 
@@ -31,12 +30,12 @@ class _MyTextFieldState extends State<MyTextField> {
         decoration: InputDecoration(
           icon: widget.icon,
           hintText: widget.hintText,
-          enabledBorder: UnderlineInputBorder(
+          enabledBorder: const UnderlineInputBorder(
             borderSide: BorderSide(
               color: MyColors.primarydark,
             ),
           ),
-          focusedBorder: UnderlineInputBorder(
+          focusedBorder: const UnderlineInputBorder(
             borderSide: BorderSide(
               color: MyColors.primarydark,
             ),

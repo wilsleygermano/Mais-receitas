@@ -66,31 +66,31 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 72,
                   ),
                   MyTextField(
                     controller: _emailController,
                     hintText: "E-mail",
                     textInputActionField: TextInputAction.next,
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.alternate_email,
                       color: MyColors.primarydark,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 36,
                   ),
                   MyPasswordField(
                     textInputActionField: TextInputAction.done,
                     controller: _passwordController,
                     hintText: "Senha",
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.key,
                       color: MyColors.primarydark,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 80,
                   ),
                   Row(
