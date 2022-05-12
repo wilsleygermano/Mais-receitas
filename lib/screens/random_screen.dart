@@ -3,6 +3,7 @@ import 'package:mais_receitas/controller/home_controller.dart';
 import 'package:mais_receitas/data/user_model.dart';
 import 'package:mais_receitas/screens/recipes_screen.dart';
 import 'package:mais_receitas/widgets/main_button.dart';
+import 'package:mais_receitas/widgets/my_circular_progress_indicator.dart';
 
 class RandomScreen extends StatefulWidget {
   final UserModel user;
@@ -130,12 +131,7 @@ class _RandomScreenState extends State<RandomScreen> {
               },
             );
           }
-          return const Center(
-            child: CircularProgressIndicator(
-              color: Colors.purple,
-              strokeWidth: 8.0,
-            ),
-          );
+          return const MyCircularProgressIndicator();
         }),
       ),
     );
