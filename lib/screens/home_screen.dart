@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:mais_receitas/controller/check_favorite.dart';
 import 'package:mais_receitas/controller/home_controller.dart';
 import 'package:mais_receitas/screens/recipes_screen.dart';
 import 'package:mais_receitas/widgets/drawer.dart';
@@ -70,16 +71,32 @@ class _HomeScreenState extends State<HomeScreen> {
                               borderRadius: BorderRadius.circular(10)),
                           elevation: 0,
                           child: InkWell(
-                            onTap: () {
-                              Navigator.push(
+                            onTap: () async {
+                              if (await checkFavorite(homeController.allRecipesName.recipesName![index]) == true) {
+                                Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: ((context) => RecipesScreen(
                                         recipesName: homeController
                                             .allRecipesName.recipesName![index],
+                                            isFavorited: true,
                                       )),
                                 ),
                               );
+                              } if (await checkFavorite(homeController.allRecipesName.recipesName![index]) == false) {
+                                Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: ((context) => RecipesScreen(
+                                        recipesName: homeController
+                                            .allRecipesName.recipesName![index],
+                                            isFavorited: false,
+                                      )),
+                                ),
+                              );
+                              }
+                              
+                              
                             },
                             splashColor: MyColors.primarydark,
                             child: ListTile(
