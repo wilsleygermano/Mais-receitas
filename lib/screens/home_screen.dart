@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mais_receitas/controller/home_controller.dart';
 import 'package:mais_receitas/screens/recipes_screen.dart';
+import 'package:mais_receitas/widgets/drawer.dart';
 import 'package:mais_receitas/widgets/my_sliver_app_bar.dart';
 
 import '../design/my_colors.dart';
@@ -42,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: MyDrawer(),
       backgroundColor: Colors.transparent,
       body: FutureBuilder(
         future: homeController.start(),

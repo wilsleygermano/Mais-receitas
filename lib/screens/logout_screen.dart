@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:mais_receitas/screens/login_screen.dart';
 import 'package:mais_receitas/widgets/main_button.dart';
-import 'package:mais_receitas/widgets/page_viewer.dart';
 
-import '../data/user_model.dart';
+
 
 class LogoutScreen extends StatelessWidget {
-  final UserModel user;
+  
 
-  const LogoutScreen({Key? key, required this.user}) : super(key: key);
+  const LogoutScreen({Key? key, }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +66,7 @@ class LogoutScreen extends StatelessWidget {
                           buttonPressed: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => PageViewer(user: user),
+                              builder: (context) => LoginScreen(),
                             ),
                           ),
                         ),
