@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mais_receitas/design/my_colors.dart';
@@ -18,18 +20,19 @@ class MyDrawer extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
+            
             const SizedBox(
               height: 40,
             ),
             ListTile(
               title: Padding(
                 padding: const EdgeInsets.only(top: 8, left: 16),
-                child: Container(
-                  child: ,
-                ),
+                child: Container(),
               ),
             ),
-            const SizedBox(height: 24,),
+            const SizedBox(
+              height: 24,
+            ),
             ListTile(
               title: Padding(
                 padding: const EdgeInsets.only(top: 8, left: 16),
