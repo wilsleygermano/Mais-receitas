@@ -10,7 +10,6 @@ import 'package:mais_receitas/data/recipe_model.dart';
 import 'package:mais_receitas/data/user_model.dart';
 import 'package:mais_receitas/design/my_colors.dart';
 
-
 class MethodCard extends StatefulWidget {
   final String recipeName;
 
@@ -30,12 +29,10 @@ class _MethodCardState extends State<MethodCard> {
   late StreamSubscription<DocumentSnapshot> subscription;
   late DocumentReference documentReference;
 
-
   @override
   void initState() {
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -92,16 +89,23 @@ class _MethodCardState extends State<MethodCard> {
                     "nome": "${snapshot.data!.recipes!.nome}",
                   });
                   return ListView.builder(
-                    itemCount:
-                        snapshot.data!.recipes!.ingredientes!.length,
+                    itemCount: snapshot.data!.recipes!.ingredientes!.length,
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return Card(
                         elevation: 0,
                         child: ListTile(
-                          title: Text(snapshot
-                              .data!.recipes!.ingredientes![index]),
+                          title: Text(
+                            snapshot.data!.recipes!.ingredientes![index],
+                            style: TextStyle(
+                              color: MyColors.primarydark,
+                              fontFamily: GoogleFonts.ptSerif().fontFamily,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                               
+                            ),
+                          ),
                           tileColor: MyColors.primarylight,
                           leading: Container(
                             height: 32,
