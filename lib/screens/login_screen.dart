@@ -36,106 +36,104 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.transparent,
-      body: SafeArea(
-        child: Center(
-          child: Stack(
-            children: [
-              Container(
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('lib/images/background.png'),
-                    fit: BoxFit.fill,
-                  ),
+      body: Center(
+        child: Stack(
+          children: [
+            Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('lib/images/background.png'),
+                  fit: BoxFit.fill,
                 ),
               ),
-              Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        height: 268,
-                        width: 237,
-                        alignment: Alignment.topCenter,
-                        decoration: const BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage('lib/images/logo.png'),
-                            fit: BoxFit.fill,
-                          ),
+            ),
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: 268,
+                      width: 237,
+                      alignment: Alignment.topCenter,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('lib/images/logo.png'),
+                          fit: BoxFit.fill,
                         ),
                       ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 72,
-                  ),
-                  MyTextField(
-                    controller: _emailController,
-                    hintText: "E-mail",
-                    textInputActionField: TextInputAction.next,
-                    icon: Icon(
-                      Icons.alternate_email,
-                      color: MyColors.primarydark,
                     ),
+                  ],
+                ),
+                SizedBox(
+                  height: 72,
+                ),
+                MyTextField(
+                  controller: _emailController,
+                  hintText: "E-mail",
+                  textInputActionField: TextInputAction.next,
+                  icon: Icon(
+                    Icons.alternate_email,
+                    color: MyColors.primarydark,
                   ),
-                  SizedBox(
-                    height: 36,
+                ),
+                SizedBox(
+                  height: 36,
+                ),
+                MyPasswordField(
+                  textInputActionField: TextInputAction.done,
+                  controller: _passwordController,
+                  hintText: "Senha",
+                  icon: Icon(
+                    Icons.key,
+                    color: MyColors.primarydark,
                   ),
-                  MyPasswordField(
-                    textInputActionField: TextInputAction.done,
-                    controller: _passwordController,
-                    hintText: "Senha",
-                    icon: Icon(
-                      Icons.key,
-                      color: MyColors.primarydark,
+                ),
+                SizedBox(
+                  height: 80,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    MainButton(
+                      labelText: "ENTRAR",
+                      buttonPressed: () async {
+                        if (_emailController.text.isNotEmpty == true &&
+                            _passwordController.text.isNotEmpty == true) {
+                          return [
+                            await getUserSignedIn(
+                                _emailController.text.trim(),
+                                _passwordController.text,
+                                context,
+                                favoriteRecipeBox)
+                          ];
+                        }
+                        if (_emailController.text.isNotEmpty != true ||
+                            _passwordController.text.isNotEmpty != true) {
+                          return myDialog(
+                            context,
+                            "ERRO:",
+                            "Todos os campos devem ser preenchidos",
+                            "OK",
+                            () => Navigator.pop(context),
+                          );
+                        }
+                      },
                     ),
-                  ),
-                  SizedBox(
-                    height: 80,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      MainButton(
-                        labelText: "ENTRAR",
-                        buttonPressed: () async {
-                          if (_emailController.text.isNotEmpty == true &&
-                              _passwordController.text.isNotEmpty == true) {
-                            return [
-                              await getUserSignedIn(
-                                  _emailController.text.trim(),
-                                  _passwordController.text,
-                                  context,
-                                  favoriteRecipeBox)
-                            ];
-                          }
-                          if (_emailController.text.isNotEmpty != true ||
-                              _passwordController.text.isNotEmpty != true) {
-                            return myDialog(
-                              context,
-                              "ERRO:",
-                              "Todos os campos devem ser preenchidos",
-                              "OK",
-                              () => Navigator.pop(context),
-                            );
-                          }
-                        },
-                      ),
-                      MainButton(
-                        labelText: "CADASTRAR",
-                        buttonPressed: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const SignupScreen(),
-                          ),
+                    MainButton(
+                      labelText: "CADASTRAR",
+                      buttonPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SignupScreen(),
                         ),
                       ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
