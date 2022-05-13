@@ -59,7 +59,7 @@ class _RecipesScreenState extends State<RecipesScreen> {
         isFavorited: widget.isFavorited,
       )
     ];
-
+    favoritedRecipe.addAll({"nome": widget.recipesName});
     super.initState();
     // setFormAction(true);
   }

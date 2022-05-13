@@ -4,7 +4,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mais_receitas/controller/check_favorite.dart';
 import 'package:mais_receitas/controller/home_controller.dart';
 import 'package:mais_receitas/screens/recipes_screen.dart';
-import 'package:mais_receitas/widgets/drawer.dart';
 import 'package:mais_receitas/widgets/my_sliver_app_bar.dart';
 import 'package:mais_receitas/widgets/stylish_drawer.dart';
 
@@ -45,8 +44,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+      top: false,
       child: Scaffold(
-        drawer: const  StylishDrawer(),
+        drawer: StylishDrawer(),
         backgroundColor: Colors.transparent,
         body: FutureBuilder(
           future: homeController.start(),

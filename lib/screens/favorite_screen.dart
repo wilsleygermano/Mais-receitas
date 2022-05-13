@@ -7,6 +7,7 @@ import 'package:mais_receitas/data/favorite_model.dart';
 import 'package:mais_receitas/design/my_colors.dart';
 import 'package:mais_receitas/screens/no_favorite_screen.dart';
 import 'package:mais_receitas/screens/recipes_screen.dart';
+import 'package:mais_receitas/widgets/stylish_drawer.dart';
 
 import '../widgets/my_sliver_app_bar.dart';
 
@@ -48,7 +49,9 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+      top: false,
       child: Scaffold(
+        drawer: const StylishDrawer(),
         backgroundColor: Colors.transparent,
         body: StreamBuilder<List<FavoritesModel>>(
           stream: getFavRecipes(),
