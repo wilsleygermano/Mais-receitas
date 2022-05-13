@@ -103,11 +103,6 @@ class _IngredientCardState extends State<IngredientCard> {
                     child: ElevatedButton(
                       child: const Text("Try again"),
                       onPressed: () {
-                        // setState(
-                        //   () {
-                        //     recipe;
-                        //   },
-                        // );
                       },
                     ),
                   );
@@ -120,28 +115,6 @@ class _IngredientCardState extends State<IngredientCard> {
                 );
               },
             ),
-                 
-                 
-                 
-                 
-                 
-                 
-                  // ListView(
-                  //   physics: const NeverScrollableScrollPhysics(),
-                  //   shrinkWrap: true,
-                  //   children: const <Widget>[
-                  //     Card(
-                  //       elevation: 0,
-                  //       child: ListTile(
-                  //         title: Text(
-                  //           "1 - Abra o abacaxi no meio, no sentido da coroa para a base. Retire a polpa e cortar em cubos.   2- Abra o abacaxi no meio, no sentido da coroa para a base. Retire a polpa e cortar em cubos. ",
-                  //           textAlign: TextAlign.center,
-                  //         ),
-                  //         tileColor: MyColors.primarylight,
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
                 ],
               ),
             ),
