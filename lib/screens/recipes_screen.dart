@@ -40,6 +40,7 @@ class _RecipesScreenState extends State<RecipesScreen> {
       ),
       IngredientCard(
         recipeName: widget.recipesName,
+        isFavorited: widget.isFavorited,
       )
     ];
 
