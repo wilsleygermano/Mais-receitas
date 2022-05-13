@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:mais_receitas/controller/check_favorite.dart';
 import 'package:mais_receitas/data/favorite_model.dart';
 import 'package:mais_receitas/design/my_colors.dart';
 import 'package:mais_receitas/screens/no_favorite_screen.dart';
@@ -46,110 +47,127 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: StreamBuilder<List<FavoritesModel>>(
-        stream: getFavRecipes(),
-        builder: ((context, snapshot) {
-          if (snapshot.hasData) {
-            return Stack(
-              children: [
-                Container(
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('lib/images/background.png'),
-                        fit: BoxFit.fill),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: StreamBuilder<List<FavoritesModel>>(
+          stream: getFavRecipes(),
+          builder: ((context, snapshot) {
+            if (snapshot.hasData) {
+              return Stack(
+                children: [
+                  Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('lib/images/background.png'),
+                          fit: BoxFit.fill),
+                    ),
                   ),
-                ),
-                CustomScrollView(
-                  slivers: <Widget>[
-                    MySliverAppBar(),
-                    SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                        (BuildContext context, int index) {
-                          return Card(
-                            color: MyColors.primarylight,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                            elevation: 0,
-                            child: InkWell(
-                              onTap: () async {
-                                await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: ((context) => RecipesScreen(
-                                          recipesName:
-                                              snapshot.data![index].nome!,
-                                        )),
+                  CustomScrollView(
+                    slivers: <Widget>[
+                      MySliverAppBar(),
+                      SliverList(
+                        delegate: SliverChildBuilderDelegate(
+                          (BuildContext context, int index) {
+                            return Card(
+                              color: MyColors.primarylight,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                              elevation: 0,
+                              child: InkWell(
+                                onTap: () async {
+
+                                  if (await checkFavorite(snapshot.data![index].nome!) == true) {
+                                    Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: ((context) => RecipesScreen(
+                                            recipesName:
+                                                snapshot.data![index].nome!,
+                                                isFavorited: true,
+                                          )),
+                                    ),
+                                  );
+                                  } if (await checkFavorite(snapshot.data![index].nome!) == false) {
+                                    Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: ((context) => RecipesScreen(
+                                            recipesName:
+                                                snapshot.data![index].nome!,
+                                                isFavorited: false,
+                                          )),
+                                    ),
+                                  );
+                                  }
+                                },
+                                splashColor: MyColors.primarydark,
+                                child: ListTile(
+                                  title: Text(
+                                    snapshot.data![index].nome!,
+                                    style: TextStyle(
+                                      overflow: TextOverflow.ellipsis,
+                                      color: MyColors.primarydark,
+                                      fontFamily:
+                                          GoogleFonts.ptSerif().fontFamily,
+                                      fontSize: 18,
+                                    ),
+                                    maxLines: 1,
                                   ),
-                                );
-                              },
-                              splashColor: MyColors.primarydark,
-                              child: ListTile(
-                                title: Text(
-                                  snapshot.data![index].nome!,
-                                  style: TextStyle(
-                                    overflow: TextOverflow.ellipsis,
-                                    color: MyColors.primarydark,
-                                    fontFamily:
-                                        GoogleFonts.ptSerif().fontFamily,
-                                    fontSize: 18,
-                                  ),
-                                  maxLines: 1,
-                                ),
-                                leading: Container(
-                                  height: 32,
-                                  width: 34,
-                                  decoration: const BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          "lib/images/lead_icon.png"),
+                                  leading: Container(
+                                    height: 32,
+                                    width: 34,
+                                    decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                            "lib/images/lead_icon.png"),
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
-                            ),
-                          );
-                        },
-                        childCount: recipesList.length,
+                            );
+                          },
+                          childCount: recipesList.length,
+                        ),
                       ),
+                    ],
+                  ),
+                ],
+              );
+            }
+            if (snapshot.hasError) {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return Dialog(
+                    backgroundColor: Colors.white,
+                    elevation: 8,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
                     ),
-                  ],
-                ),
-              ],
+                    child: ElevatedButton(
+                      child: const Text(
+                          "Something went wrong, please try again later"),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  );
+                },
+              );
+            }
+            if (!snapshot.hasData) {
+              return NoFavoriteScreen();
+            }
+            return const Center(
+              child: CircularProgressIndicator(
+                color: Colors.purple,
+                strokeWidth: 8.0,
+              ),
             );
-          }
-          if (snapshot.hasError) {
-            showDialog(
-              context: context,
-              builder: (context) {
-                return Dialog(
-                  backgroundColor: Colors.white,
-                  elevation: 8,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  child: ElevatedButton(
-                    child: const Text(
-                        "Something went wrong, please try again later"),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                );
-              },
-            );
-          }
-          if (!snapshot.hasData) {
-            return NoFavoriteScreen();
-          }
-          return const Center(
-            child: CircularProgressIndicator(
-              color: Colors.purple,
-              strokeWidth: 8.0,
-            ),
-          );
-        }),
+          }),
+        ),
       ),
     );
   }
