@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mais_receitas/controller/home_controller.dart';
 import 'package:mais_receitas/data/recipes_name_model.dart';
 import 'package:mais_receitas/design/my_colors.dart';
-import 'package:mais_receitas/widgets/drawer.dart';
 import 'package:mais_receitas/screens/recipes_screen.dart';
 import 'package:mais_receitas/widgets/recipes_search.dart';
 

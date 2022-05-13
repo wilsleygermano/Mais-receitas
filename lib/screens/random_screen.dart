@@ -37,6 +37,7 @@ class _RandomScreenState extends State<RandomScreen> {
         builder: ((context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             return SafeArea(
+              top: false,
               child: Center(
                 child: Stack(
                   children: [

@@ -48,6 +48,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+      top: false,
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: StreamBuilder<List<FavoritesModel>>(
