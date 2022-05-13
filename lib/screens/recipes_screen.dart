@@ -1,17 +1,23 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
+import 'package:mais_receitas/controller/favorite_button_pressed.dart';
+import 'package:mais_receitas/controller/get_recipe.dart';
 import 'package:mais_receitas/design/my_colors.dart';
 import 'package:mais_receitas/widgets/ingredient_card.dart';
 import 'package:mais_receitas/widgets/method_card.dart';
+import 'package:share_plus/share_plus.dart';
 import '../widgets/return_button.dart';
 
 class RecipesScreen extends StatefulWidget {
   final String recipesName;
   final bool? isFavorited;
-  
 
-
-  const RecipesScreen({required this.recipesName, Key? key, this.isFavorited, }) : super(key: key);
+  const RecipesScreen({
+    required this.recipesName,
+    Key? key,
+    this.isFavorited,
+  }) : super(key: key);
 
   @override
   State<RecipesScreen> createState() => _RecipesScreenState();
@@ -20,6 +26,16 @@ class RecipesScreen extends StatefulWidget {
 class _RecipesScreenState extends State<RecipesScreen> {
   late ScrollController _scrollController;
   late List cardList;
+  late Map<String, dynamic> favoritedRecipe = {};
+
+  _shareContent() async {
+    var recipe = await getRecipe(widget.recipesName);
+    Share.share(
+        "Receita: ${recipe!.recipes!.nome} \n"
+        "Ingredientes: ${recipe.recipes!.ingredientes.toString()} \n"
+        "Preparo: ${recipe.recipes!.preparo.toString()}",
+        subject: recipe.recipes!.nome);
+  }
 
   int _currentIndex = 0;
   List<T> map<T>(List list, Function handler) {
@@ -110,21 +126,39 @@ class _RecipesScreenState extends State<RecipesScreen> {
                       }).toList(),
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: map<Widget>(cardList, (index, url) {
-                        return Container(
-                          width: 10.0,
-                          height: 10.0,
-                          margin: const EdgeInsets.symmetric(
-                              vertical: 10.0, horizontal: 2.0),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: _currentIndex == index
-                                ? Colors.deepPurple
-                                : MyColors.primarydark,
-                          ),
-                        );
-                      }),
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        FavoriteButton(
+                          iconSize: 50,
+                          isFavorite: widget.isFavorited,
+                          iconColor: Colors.deepPurple,
+                          valueChanged: (_isFavorited) async {
+                            await favoriteButtonPressed(
+                                widget.recipesName, favoritedRecipe, context);
+                          },
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: map<Widget>(cardList, (index, url) {
+                            return Container(
+                              width: 10.0,
+                              height: 10.0,
+                              margin: const EdgeInsets.symmetric(
+                                  vertical: 10.0, horizontal: 2.0),
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: _currentIndex == index
+                                    ? Colors.deepPurple
+                                    : MyColors.primarydark,
+                              ),
+                            );
+                          }),
+                        ),
+                        IconButton(
+                            onPressed: (() async => {_shareContent()}),
+                            icon: const Icon(Icons.share,
+                                color: MyColors.primarydark)),
+                      ],
                     ),
                   ],
                 ),
