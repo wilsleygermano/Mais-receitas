@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        drawer: MyDrawer(),
+        drawer: StylishDrawer(),
         backgroundColor: Colors.transparent,
         body: FutureBuilder(
           future: homeController.start(),
