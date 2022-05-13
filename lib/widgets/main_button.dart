@@ -20,10 +20,10 @@ class MainButton extends StatelessWidget {
                       child: Text(
                         labelText,
                         style: TextStyle(
-                          color: MyColors.primaryblack,
-                          fontFamily: GoogleFonts.inter().fontFamily,
+                          color:const Color.fromARGB(255, 82, 70, 114),
+                          fontFamily: GoogleFonts.secularOne().fontFamily,
                           fontSize: 12,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                       style: ButtonStyle(

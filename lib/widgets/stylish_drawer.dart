@@ -33,7 +33,7 @@ class _StylishDrawerState extends State<StylishDrawer> {
                   Column(
                     children:  <Widget>[
                       Padding(
-                        padding:const  EdgeInsets.all(10.0),
+                        padding:const  EdgeInsets.fromLTRB(20, 50, 45, 20),
                         child: SizedBox(
                             height: 150,
                             width: 150,

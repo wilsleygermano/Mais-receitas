@@ -63,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   CustomScrollView(
                     slivers: <Widget>[
-                      MySliverAppBar(),
+                      const MySliverAppBar(),
                       SliverList(
                         delegate: SliverChildBuilderDelegate(
                             (BuildContext context, int index) {
