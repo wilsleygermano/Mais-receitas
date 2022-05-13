@@ -1,7 +1,4 @@
-import 'dart:ui';
-
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mais_receitas/data/recipe_model.dart';
@@ -12,7 +9,9 @@ import '../design/my_colors.dart';
 
 class IngredientCard extends StatefulWidget {
   final String recipeName;
-  const IngredientCard({required this.recipeName, Key? key}) : super(key: key);
+  final bool? isFavorited;
+
+  const IngredientCard({required this.recipeName, Key? key, this.isFavorited}) : super(key: key);
 
   @override
   State<IngredientCard> createState() => _IngredientCardState();
@@ -103,11 +102,6 @@ class _IngredientCardState extends State<IngredientCard> {
                     child: ElevatedButton(
                       child: const Text("Try again"),
                       onPressed: () {
-                        // setState(
-                        //   () {
-                        //     recipe;
-                        //   },
-                        // );
                       },
                     ),
                   );
@@ -120,28 +114,6 @@ class _IngredientCardState extends State<IngredientCard> {
                 );
               },
             ),
-                 
-                 
-                 
-                 
-                 
-                 
-                  // ListView(
-                  //   physics: const NeverScrollableScrollPhysics(),
-                  //   shrinkWrap: true,
-                  //   children: const <Widget>[
-                  //     Card(
-                  //       elevation: 0,
-                  //       child: ListTile(
-                  //         title: Text(
-                  //           "1 - Abra o abacaxi no meio, no sentido da coroa para a base. Retire a polpa e cortar em cubos.   2- Abra o abacaxi no meio, no sentido da coroa para a base. Retire a polpa e cortar em cubos. ",
-                  //           textAlign: TextAlign.center,
-                  //         ),
-                  //         tileColor: MyColors.primarylight,
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
                 ],
               ),
             ),

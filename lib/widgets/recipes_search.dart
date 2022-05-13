@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mais_receitas/controller/check_favorite.dart';
 import 'package:mais_receitas/controller/home_controller.dart';
 import 'package:mais_receitas/data/recipes_name_model.dart';
 import 'package:mais_receitas/design/my_colors.dart';
@@ -33,7 +34,7 @@ class RecipesSearch extends SearchDelegate<RecipesNameModel> {
       onPressed: () {
         close(context, RecipesNameModel());
       },
-      icon: Icon(
+      icon: const Icon(
         Icons.arrow_back,
         color: MyColors.primarydark,
       ),
@@ -56,15 +57,29 @@ class RecipesSearch extends SearchDelegate<RecipesNameModel> {
                             borderRadius: BorderRadius.circular(10)),
                         elevation: 0,
                         child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: ((context) => RecipesScreen(
-                                      recipesName: a,
-                                    )),
-                              ),
-                            );
+                          onTap: () async {
+                            if (await checkFavorite(a) == true) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: ((context) => RecipesScreen(
+                                        recipesName: a,
+                                        isFavorited: true,
+                                      )),
+                                ),
+                              );
+                            }
+                            if (await checkFavorite(a) == false) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: ((context) => RecipesScreen(
+                                        recipesName: a,
+                                        isFavorited: false,
+                                      )),
+                                ),
+                              );
+                            }
                           },
                           splashColor: MyColors.primarydark,
                           child: ListTile(
@@ -94,7 +109,7 @@ class RecipesSearch extends SearchDelegate<RecipesNameModel> {
             );
           }
           if (snapshot.connectionState == ConnectionState.none) {
-            return Center(
+            return const Center(
               child: Text("Something went wrong"),
             );
           }
@@ -125,15 +140,29 @@ class RecipesSearch extends SearchDelegate<RecipesNameModel> {
                             borderRadius: BorderRadius.circular(10)),
                         elevation: 0,
                         child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: ((context) => RecipesScreen(
-                                      recipesName: a,
-                                    )),
-                              ),
-                            );
+                          onTap: () async {
+                            if (await checkFavorite(a) == true) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: ((context) => RecipesScreen(
+                                        recipesName: a,
+                                        isFavorited: true,
+                                      )),
+                                ),
+                              );
+                            }
+                            if (await checkFavorite(a) == false) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: ((context) => RecipesScreen(
+                                        recipesName: a,
+                                        isFavorited: false,
+                                      )),
+                                ),
+                              );
+                            }
                           },
                           splashColor: MyColors.primarydark,
                           child: ListTile(
@@ -163,7 +192,7 @@ class RecipesSearch extends SearchDelegate<RecipesNameModel> {
             );
           }
           if (snapshot.connectionState == ConnectionState.none) {
-            return Center(
+            return const Center(
               child: Text("Something went wrong"),
             );
           }
