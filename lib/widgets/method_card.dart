@@ -4,6 +4,7 @@ import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mais_receitas/controller/check_favorite.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:mais_receitas/controller/favorite_button_pressed.dart';
 import 'package:mais_receitas/controller/get_recipe.dart';
 import 'package:mais_receitas/data/recipe_model.dart';
@@ -15,7 +16,8 @@ class MethodCard extends StatefulWidget {
 
   const MethodCard({
     required this.recipeName,
-    Key? key, this.isFavorited,
+    Key? key,
+    this.isFavorited,
   }) : super(key: key);
 
   @override
@@ -28,7 +30,14 @@ class _MethodCardState extends State<MethodCard> {
   late Map<String, dynamic> favoritedRecipe = {};
   late bool isFavorited = false;
 
- 
+  _shareContent() async {
+    var recipe = await getRecipe(widget.recipeName);
+    Share.share(
+        "Receita: ${recipe!.recipes!.nome} \n"
+        "Ingredientes: ${recipe.recipes!.ingredientes.toString()} \n"
+        "Preparo: ${recipe.recipes!.preparo.toString()}",
+        subject: recipe.recipes!.nome);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,12 +64,16 @@ class _MethodCardState extends State<MethodCard> {
                     ),
                   ),
                 ),
+                IconButton(
+                    onPressed: (() async => {_shareContent()}),
+                    icon: const Icon(Icons.share, color: MyColors.primarydark)),
                 FavoriteButton(
                   iconSize: 50,
                   isFavorite: widget.isFavorited,
                   iconColor: Colors.deepPurple,
                   valueChanged: (_isFavorited) async {
-                    await favoriteButtonPressed(recipeTitle, favoritedRecipe, context);
+                    await favoriteButtonPressed(
+                        recipeTitle, favoritedRecipe, context);
                   },
                 ),
               ],
@@ -99,7 +112,6 @@ class _MethodCardState extends State<MethodCard> {
                               fontFamily: GoogleFonts.ptSerif().fontFamily,
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
-                               
                             ),
                           ),
                           tileColor: MyColors.primarylight,
