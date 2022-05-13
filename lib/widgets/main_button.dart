@@ -21,9 +21,9 @@ class MainButton extends StatelessWidget {
                         labelText,
                         style: TextStyle(
                           color:const Color.fromARGB(255, 82, 70, 114),
-                          fontFamily: GoogleFonts.inter().fontFamily,
+                          fontFamily: GoogleFonts.secularOne().fontFamily,
                           fontSize: 12,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                       style: ButtonStyle(
