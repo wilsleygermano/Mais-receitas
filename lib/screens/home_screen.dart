@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        drawer: MyDrawer(),
+        drawer: const  StylishDrawer(),
         backgroundColor: Colors.transparent,
         body: FutureBuilder(
           future: homeController.start(),
@@ -63,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   CustomScrollView(
                     slivers: <Widget>[
-                      MySliverAppBar(),
+                      const MySliverAppBar(),
                       SliverList(
                         delegate: SliverChildBuilderDelegate(
                             (BuildContext context, int index) {
