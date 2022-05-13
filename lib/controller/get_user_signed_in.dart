@@ -28,8 +28,8 @@ Future getUserSignedIn(
     // debugPrint(hiveBox.values.toString());
     myDialog(
       context,
-      "SUCESSO",
-      "Seja bem-vindo(a)",
+      "SUCESSO!",
+      "Seja bem-vindo(a).",
       "OK",
       () => Navigator.push(
         context,

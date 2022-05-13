@@ -81,9 +81,9 @@ class _PageViewerState extends State<PageViewer> {
           index: _page,
           height: 60.0,
           items: const <Widget>[
-            Icon(Icons.home_outlined, size: 30),
-            Icon(Icons.shuffle, size: 30),
-            Icon(Icons.favorite_border, size: 30),
+            Icon(Icons.home_outlined, size: 30,color: Color.fromARGB(255, 100, 85, 139),),
+            Icon(Icons.shuffle, size: 30,color: Color.fromARGB(255, 100, 85, 139),),
+            Icon(Icons.favorite_border, size: 30,color:Color.fromARGB(255, 100, 85, 139),),
           ],
           color: MyColors.primaryoriginal,
           buttonBackgroundColor: MyColors.primarydark,
