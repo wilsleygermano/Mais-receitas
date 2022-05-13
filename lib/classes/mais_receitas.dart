@@ -9,6 +9,7 @@ class MaisReceitas extends StatelessWidget {
     return const MaterialApp(
       title: 'Flutter Demo',
       home: Splash(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
