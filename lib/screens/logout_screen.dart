@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:mais_receitas/screens/login_screen.dart';
 import 'package:mais_receitas/widgets/main_button.dart';
 
+import 'home_screen.dart';
+
 
 
 class LogoutScreen extends StatelessWidget {
@@ -66,7 +68,7 @@ class LogoutScreen extends StatelessWidget {
                           buttonPressed: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => LoginScreen(),
+                              builder: (context) => HomeScreen(),
                             ),
                           ),
                         ),
