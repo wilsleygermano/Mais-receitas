@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:mais_receitas/controller/delete_firestore_docs.dart';
+import 'package:mais_receitas/controller/delete_hive_user.dart';
 import 'package:mais_receitas/controller/delete_user.dart';
 import 'package:mais_receitas/design/my_colors.dart';
 import 'package:mais_receitas/screens/home_screen.dart';
@@ -175,8 +177,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       ),
                                       OutlinedButton(
                                         onPressed: () async {
-                                          await deleteUser(
-                                              userData.get("email")!, context);
+                                          
+                                            await deleteUser(
+                                                userData.get("email")!,
+                                                context);
+                                            await deleteFirestoreDocs(context);
+                                            await deleteHiveUser(context);
+   
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
