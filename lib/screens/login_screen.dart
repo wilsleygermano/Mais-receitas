@@ -4,7 +4,6 @@ import 'package:mais_receitas/classes/my_dialog.dart';
 import 'package:mais_receitas/controller/home_controller.dart';
 import 'package:mais_receitas/controller/get_user_signed_in.dart';
 import 'package:mais_receitas/design/my_colors.dart';
-import 'package:mais_receitas/screens/profile_screen.dart';
 import 'package:mais_receitas/screens/signup_screen.dart';
 import 'package:mais_receitas/widgets/main_button.dart';
 import 'package:mais_receitas/widgets/my_password_field.dart';
@@ -92,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
 
                 SizedBox(
-                  height: 80,
+                  height: 60,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -102,13 +101,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       buttonPressed: () async {
                         if (_emailController.text.isNotEmpty == true &&
                             _passwordController.text.isNotEmpty == true) {
-                          return [
+                          return 
                             await getUserSignedIn(
                                 _emailController.text.trim(),
                                 _passwordController.text,
                                 context,
-                                favoriteRecipeBox)
-                          ];
+                                favoriteRecipeBox);
                         }
                         if (_emailController.text.isNotEmpty != true ||
                             _passwordController.text.isNotEmpty != true) {
@@ -122,17 +120,28 @@ class _LoginScreenState extends State<LoginScreen> {
                         }
                       },
                     ),
-                    MainButton(
-                      labelText: "CADASTRAR",
-                      buttonPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const SignupScreen(),
-                        ),
-                      ),
-                    ),
+                    
                   ],
                 ),
+
+                Padding(
+                  padding: const EdgeInsets.only(top: 48.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+                    children: [
+                      MainButton(
+                        labelText: "CADASTRAR",
+                        buttonPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SignupScreen(),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
               ],
             ),
           ],
