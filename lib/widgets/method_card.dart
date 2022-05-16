@@ -1,11 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mais_receitas/controller/check_favorite.dart';
-import 'package:share_plus/share_plus.dart';
-import 'package:mais_receitas/controller/favorite_button_pressed.dart';
 import 'package:mais_receitas/controller/get_recipe.dart';
 import 'package:mais_receitas/data/recipe_model.dart';
 import 'package:mais_receitas/design/my_colors.dart';
