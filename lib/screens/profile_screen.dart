@@ -5,7 +5,6 @@ import 'package:mais_receitas/controller/delete_firestore_docs.dart';
 import 'package:mais_receitas/controller/delete_hive_user.dart';
 import 'package:mais_receitas/controller/delete_user.dart';
 import 'package:mais_receitas/design/my_colors.dart';
-import 'package:mais_receitas/screens/home_screen.dart';
 import 'package:mais_receitas/screens/login_screen.dart';
 import 'package:mais_receitas/screens/update_password_screen.dart';
 import 'package:mais_receitas/widgets/my_list_tile.dart';

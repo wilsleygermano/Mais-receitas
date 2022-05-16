@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mais_receitas/classes/my_dialog.dart';
@@ -5,6 +7,8 @@ import 'package:mais_receitas/controller/home_controller.dart';
 import 'package:mais_receitas/controller/get_user_signed_in.dart';
 import 'package:mais_receitas/design/my_colors.dart';
 import 'package:mais_receitas/screens/signup_screen.dart';
+import 'package:mais_receitas/widgets/background_image.dart';
+import 'package:mais_receitas/widgets/logo_image.dart';
 import 'package:mais_receitas/widgets/main_button.dart';
 import 'package:mais_receitas/widgets/my_password_field.dart';
 import 'package:mais_receitas/widgets/my_text_field.dart';
@@ -39,33 +43,16 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Center(
         child: Stack(
           children: [
-            Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('lib/images/background.png'),
-                  fit: BoxFit.fill,
-                ),
-              ),
-            ),
+            const BackgroundImage(),
             Column(
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      height: 268,
-                      width: 237,
-                      alignment: Alignment.topCenter,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('lib/images/logo.png'),
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                    ),
+                  children: const [
+                    LogoImage(),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 72,
                 ),
                 MyTextField(
