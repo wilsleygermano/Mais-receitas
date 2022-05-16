@@ -65,7 +65,7 @@ class _AboutScreenState extends State<AboutScreen> {
                               BoxShadow(
                                 blurRadius: 16,
                                 spreadRadius: 16,
-                                color: Colors.black.withOpacity(0.2),
+                                color: MyColors.primarydark.withOpacity(0.4),
                               )
                             ]),
                             child: ClipRRect(
@@ -80,45 +80,46 @@ class _AboutScreenState extends State<AboutScreen> {
                                       const EdgeInsets.fromLTRB(20, 20, 20, 20),
                                   margin:
                                       const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                                  // width: 360,
-                                  height: 200,
+                                  width: 360,
+                                  height: 400,
                                   decoration: BoxDecoration(
-                                      color: Colors.white.withOpacity(0.1),
+                                      color: MyColors.primaryoriginal.withOpacity(0.1),
                                       borderRadius: BorderRadius.circular(16.0),
                                       border: Border.all(
-                                        width: 2.0,
-                                        color: Colors.white.withOpacity(0.2),
-                                      )),
-                                  child: Scrollbar(
-                                    isAlwaysShown: false,
-                                    scrollbarOrientation:
-                                        ScrollbarOrientation.left,
-                                    child: Column(
-                                      children: [
-                                        Text(
-                                          " Sobre este projeto:",
-                                          style: TextStyle(
-                                              fontFamily:
-                                                  GoogleFonts.secularOne()
-                                                      .fontFamily,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 24,
-                                              color: MyColors.primarydark),
-                                        ),
-                                        const SizedBox(
-                                          height: 12,
-                                        ),
-                                      ],
-                                    ),
+                                        width: 4.0,
+                                        color: MyColors.primaryoriginal.withOpacity(0.5),
+                                      ),),
+                                  child: Column(
+                                    children: [
+                                      Text(
+                                        " Sobre este projeto:",
+                                        style: TextStyle(
+                                            fontFamily:
+                                                GoogleFonts.secularOne()
+                                                    .fontFamily,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 24,
+                                            color: MyColors.primarydark),
+                                      ),
+                                      const SizedBox(height: 16,),
+                                      Text(
+                                        "Elaborado com amor e carinho para a SnowAcademy. ",
+                                        style: TextStyle(
+                                            fontFamily:
+                                                GoogleFonts.secularOne()
+                                                    .fontFamily,
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 20,
+                                            color: MyColors.primarydark),
+                                      ),
+                                      
+                                    ],
                                   ),
                                 ),
                               ),
                             ),
                           ),
-                          const SizedBox(height: 32),
-                          InkWell(
-                            onTap: () {},
-                          ),
+                          
                         ],
                       ),
                     ),
