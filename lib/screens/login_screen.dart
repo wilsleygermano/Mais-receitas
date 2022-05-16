@@ -89,8 +89,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     color: MyColors.primarydark,
                   ),
                 ),
+
                 SizedBox(
-                  height: 80,
+                  height: 60,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -100,13 +101,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       buttonPressed: () async {
                         if (_emailController.text.isNotEmpty == true &&
                             _passwordController.text.isNotEmpty == true) {
-                          return [
+                          return 
                             await getUserSignedIn(
                                 _emailController.text.trim(),
                                 _passwordController.text,
                                 context,
-                                favoriteRecipeBox)
-                          ];
+                                favoriteRecipeBox);
                         }
                         if (_emailController.text.isNotEmpty != true ||
                             _passwordController.text.isNotEmpty != true) {
@@ -120,17 +120,28 @@ class _LoginScreenState extends State<LoginScreen> {
                         }
                       },
                     ),
-                    MainButton(
-                      labelText: "CADASTRAR",
-                      buttonPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const SignupScreen(),
-                        ),
-                      ),
-                    ),
+                    
                   ],
                 ),
+
+                Padding(
+                  padding: const EdgeInsets.only(top: 48.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+                    children: [
+                      MainButton(
+                        labelText: "CADASTRAR",
+                        buttonPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SignupScreen(),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
               ],
             ),
           ],

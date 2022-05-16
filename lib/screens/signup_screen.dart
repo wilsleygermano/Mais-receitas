@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mais_receitas/controller/get_user_registered.dart';
 import 'package:mais_receitas/design/my_colors.dart';
+import 'package:mais_receitas/screens/home_screen.dart';
 import 'package:mais_receitas/screens/login_screen.dart';
 import 'package:mais_receitas/widgets/my_password_field.dart';
+import 'package:mais_receitas/widgets/page_viewer.dart';
 
 import '../classes/my_dialog.dart';
 import '../widgets/main_button.dart';
@@ -131,8 +133,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           if ((_nameController.text.isNotEmpty == true &&
                                   _lastNameController.text.isNotEmpty == true &&
                                   _emailController.text.isNotEmpty == true &&
-                                  _passwordController.text.isNotEmpty ==
-                                      true &&
+                                  _passwordController.text.isNotEmpty == true &&
                                   _passwordConfirmationController
                                           .text.isNotEmpty ==
                                       true) &&

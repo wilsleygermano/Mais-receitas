@@ -9,9 +9,9 @@ import 'package:mais_receitas/widgets/main_button.dart';
 import 'package:mais_receitas/widgets/page_viewer.dart';
 
 class RandomScreen extends StatefulWidget {
-  final UserModel user;
 
-  const RandomScreen({Key? key, required this.user}) : super(key: key);
+
+  const RandomScreen({Key? key,}) : super(key: key);
 
   @override
   State<RandomScreen> createState() => _RandomScreenState();

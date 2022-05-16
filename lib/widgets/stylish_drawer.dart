@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:mais_receitas/design/my_colors.dart';
 import 'package:mais_receitas/screens/logout_screen.dart';
+import 'package:mais_receitas/screens/profile_screen.dart';
 
 class StylishDrawer extends StatefulWidget {
   const StylishDrawer({Key? key}) : super(key: key);
@@ -23,15 +24,15 @@ class _StylishDrawerState extends State<StylishDrawer> {
             BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
               child: Container(
-                decoration:
-                     BoxDecoration(color:  Color.fromARGB(255, 255, 247, 255).withOpacity(0.5)),
+                decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 255, 247, 255).withOpacity(0.5)),
               ),
             ),
             Container(
               child: ListView(
                 children: <Widget>[
                   Column(
-                    children:  <Widget>[
+                    children: <Widget>[
                       Padding(
                         padding:const  EdgeInsets.fromLTRB(20, 50, 45, 20),
                         child: SizedBox(
@@ -39,8 +40,9 @@ class _StylishDrawerState extends State<StylishDrawer> {
                             width: 150,
                             child: CircleAvatar(
                               backgroundImage:
-                                 const AssetImage("lib/images/simplelogo.png"),
-                              backgroundColor: MyColors.primarylight.withOpacity(0.8),
+                                  const AssetImage("lib/images/simplelogo.png"),
+                              backgroundColor:
+                                  MyColors.primarylight.withOpacity(0.8),
                             )),
                       ),
                     ],
@@ -48,20 +50,47 @@ class _StylishDrawerState extends State<StylishDrawer> {
                   const SizedBox(height: 30),
                   const Divider(height: 0.5, color: MyColors.primarylight),
                   const ListTile(
-                    leading: Icon(Icons.info_outline, color: MyColors.primarylight,size: 25,),
-                    title: Text("Sobre", style: TextStyle(color: MyColors.primarylight,fontSize: 20)),
+                    leading: Icon(
+                      Icons.info_outline,
+                      color: MyColors.primarylight,
+                      size: 25,
+                    ),
+                    title: Text("Sobre",
+                        style: TextStyle(
+                            color: MyColors.primarylight, fontSize: 20)),
                   ),
                   const Divider(height: 0.5, color: MyColors.primarylight),
                   ListTile(
-                    leading: const Icon(Icons.logout, color: MyColors.primarylight,size: 25,),
+                    leading: Icon(
+                      Icons.account_circle_outlined,
+                      color: MyColors.primarylight,
+                      size: 25,
+                    ),
+                    title: Text("Meus Dados",
+                        style: TextStyle(
+                            color: MyColors.primarylight, fontSize: 20),),
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProfileScreen(),
+                      ),
+                    ),
+                  ),
+                  const Divider(height: 0.5, color: MyColors.primarylight),
+                  ListTile(
+                    leading: const Icon(
+                      Icons.logout,
+                      color: MyColors.primarylight,
+                      size: 25,
+                    ),
                     title: const Text("Sair",
-                        style: TextStyle(color: MyColors.primarylight,fontSize: 20)),
+                        style: TextStyle(
+                            color: MyColors.primarylight, fontSize: 20)),
                     onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => const LogoutScreen(),
                         )),
-                        
                   ),
                   const Divider(height: 0.5, color: MyColors.primarylight),
                 ],

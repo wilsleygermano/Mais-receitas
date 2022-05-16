@@ -18,6 +18,7 @@ class LogoutScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: SafeArea(
+        top: false,
         child: Center(
           child: Stack(
             children: [

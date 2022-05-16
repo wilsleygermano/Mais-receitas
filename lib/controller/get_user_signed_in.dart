@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mais_receitas/classes/my_dialog.dart';
 import 'package:mais_receitas/data/user_model.dart';
-import 'package:mais_receitas/screens/home_screen.dart';
 import 'package:mais_receitas/widgets/page_viewer.dart';
 
 Future getUserSignedIn(
@@ -23,9 +22,14 @@ Future getUserSignedIn(
       },
     );
     UserModel user = UserModel.fromJson(response.data);
-    hiveBox.putAll({"id": user.id!, "email": user.email!});
-    // function to retrieve hive box values
-    // debugPrint(hiveBox.values.toString());
+    hiveBox.putAll({
+      "id": user.id!,
+      "email": user.email!,
+      "first_name": user.firstName!,
+      "last_name": user.lastName!,
+      "token": user.userToken!,
+    });
+
     myDialog(
       context,
       "SUCESSO!",
@@ -34,9 +38,7 @@ Future getUserSignedIn(
       () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => PageViewer(
-            user: user,
-          ),
+          builder: (context) => PageViewer(),
         ),
       ),
     );
