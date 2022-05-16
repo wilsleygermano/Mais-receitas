@@ -2,11 +2,12 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:mais_receitas/controller/favorite_button_pressed.dart';
-import 'package:mais_receitas/controller/get_recipe.dart';
+import 'package:mais_receitas/controller/share_content.dart';
 import 'package:mais_receitas/design/my_colors.dart';
+import 'package:mais_receitas/widgets/background_image.dart';
 import 'package:mais_receitas/widgets/ingredient_card.dart';
+import 'package:mais_receitas/widgets/logo_image.dart';
 import 'package:mais_receitas/widgets/method_card.dart';
-import 'package:share_plus/share_plus.dart';
 import '../widgets/return_button.dart';
 
 class RecipesScreen extends StatefulWidget {
@@ -24,19 +25,8 @@ class RecipesScreen extends StatefulWidget {
 }
 
 class _RecipesScreenState extends State<RecipesScreen> {
-  late ScrollController _scrollController;
   late List cardList;
   late Map<String, dynamic> favoritedRecipe = {};
-
-  _shareContent() async {
-    var recipe = await getRecipe(widget.recipesName);
-    Share.share(
-        "Receita: ${recipe!.recipes!.nome} \n"
-        "Ingredientes: ${recipe.recipes!.ingredientes.toString()} \n"
-        "Preparo: ${recipe.recipes!.preparo.toString()}",
-        subject: recipe.recipes!.nome);
-  }
-
   int _currentIndex = 0;
   List<T> map<T>(List list, Function handler) {
     List<T> result = [];
@@ -48,7 +38,6 @@ class _RecipesScreenState extends State<RecipesScreen> {
 
   @override
   void initState() {
-    _scrollController = ScrollController();
     cardList = <Widget>[
       MethodCard(
         recipeName: widget.recipesName,
@@ -73,31 +62,14 @@ class _RecipesScreenState extends State<RecipesScreen> {
         child: Center(
           child: Stack(
             children: [
-              Container(
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('lib/images/background.png'),
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
+              const BackgroundImage(),
               const ReturnButton(),
               Padding(
                 padding: const EdgeInsets.only(left: 8, right: 8),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Container(
-                      height: 268,
-                      width: 237,
-                      alignment: Alignment.topCenter,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('lib/images/logo.png'),
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                    ),
+                    const LogoImage(),
                     CarouselSlider(
                       options: CarouselOptions(
                         enableInfiniteScroll: false,
@@ -155,7 +127,9 @@ class _RecipesScreenState extends State<RecipesScreen> {
                           }),
                         ),
                         IconButton(
-                            onPressed: (() async => {_shareContent()}),
+                            onPressed: (() async => {
+                                  shareContent(widget.recipesName),
+                                }),
                             icon: const Icon(Icons.share,
                                 color: MyColors.primarydark)),
                       ],
