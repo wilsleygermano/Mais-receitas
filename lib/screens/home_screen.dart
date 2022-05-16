@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mais_receitas/controller/check_favorite.dart';
 import 'package:mais_receitas/controller/home_controller.dart';
 import 'package:mais_receitas/screens/recipes_screen.dart';
+import 'package:mais_receitas/widgets/background_image.dart';
+import 'package:mais_receitas/widgets/my_list_tile.dart';
 import 'package:mais_receitas/widgets/my_sliver_app_bar.dart';
 import 'package:mais_receitas/widgets/stylish_drawer.dart';
 
@@ -46,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       top: false,
       child: Scaffold(
-        drawer: StylishDrawer(),
+        drawer: const StylishDrawer(),
         backgroundColor: Colors.transparent,
         body: FutureBuilder(
           future: homeController.start(),
@@ -54,13 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
             if (snapshot.connectionState == ConnectionState.done) {
               return Stack(
                 children: [
-                  Container(
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage('lib/images/background.png'),
-                          fit: BoxFit.fill),
-                    ),
-                  ),
+                  const BackgroundImage(),
                   CustomScrollView(
                     slivers: <Widget>[
                       const MySliverAppBar(),
@@ -74,51 +69,48 @@ class _HomeScreenState extends State<HomeScreen> {
                             elevation: 0,
                             child: InkWell(
                               onTap: () async {
-                                if (await checkFavorite(homeController.allRecipesName.recipesName![index]) == true) {
+                                if (await checkFavorite(homeController
+                                        .allRecipesName.recipesName![index]) ==
+                                    true) {
                                   Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: ((context) => RecipesScreen(
-                                          recipesName: homeController
-                                              .allRecipesName.recipesName![index],
-                                              isFavorited: true,
-                                        )),
-                                  ),
-                                );
-                                } if (await checkFavorite(homeController.allRecipesName.recipesName![index]) == false) {
-                                  Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: ((context) => RecipesScreen(
-                                          recipesName: homeController
-                                              .allRecipesName.recipesName![index],
-                                              isFavorited: false,
-                                        )),
-                                  ),
-                                );
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: ((context) => RecipesScreen(
+                                            recipesName: homeController
+                                                .allRecipesName
+                                                .recipesName![index],
+                                            isFavorited: true,
+                                          )),
+                                    ),
+                                  );
                                 }
-                                
-                                
+                                if (await checkFavorite(homeController
+                                        .allRecipesName.recipesName![index]) ==
+                                    false) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: ((context) => RecipesScreen(
+                                            recipesName: homeController
+                                                .allRecipesName
+                                                .recipesName![index],
+                                            isFavorited: false,
+                                          )),
+                                    ),
+                                  );
+                                }
                               },
                               splashColor: MyColors.primarydark,
-                              child: ListTile(
-                                title: Text(
-                                  "${homeController.allRecipesName.recipesName![index]}",
-                                  style: TextStyle(
-                                    overflow: TextOverflow.ellipsis,
-                                    color: MyColors.primarydark,
-                                    fontFamily: GoogleFonts.ptSerif().fontFamily,
-                                    fontSize: 18,
-                                  ),
-                                  maxLines: 1,
-                                ),
-                                leading: Container(
+                              child: MyListTile(
+                                tileText: homeController
+                                    .allRecipesName.recipesName![index],
+                                tileIcon: Container(
                                   height: 32,
                                   width: 34,
                                   decoration: const BoxDecoration(
                                     image: DecorationImage(
-                                      image:
-                                          AssetImage("lib/images/lead_icon.png"),
+                                      image: AssetImage(
+                                          "lib/images/lead_icon.png"),
                                     ),
                                   ),
                                 ),

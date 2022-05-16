@@ -4,7 +4,7 @@ import 'package:mais_receitas/design/my_colors.dart';
 
 class MyListTile extends StatefulWidget {
 final String tileText;
-final Icon tileIcon;
+final Widget tileIcon;
 final IconButton? trailingIconButton;
 final Function()? trailingPressed;
 
