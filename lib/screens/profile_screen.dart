@@ -9,6 +9,7 @@ import 'package:mais_receitas/screens/home_screen.dart';
 import 'package:mais_receitas/screens/login_screen.dart';
 import 'package:mais_receitas/screens/update_password_screen.dart';
 import 'package:mais_receitas/widgets/my_list_tile.dart';
+import 'package:mais_receitas/widgets/page_viewer.dart';
 import '../widgets/main_button.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -125,7 +126,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           buttonPressed: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const HomeScreen(),
+                              builder: (context) => PageViewer(),
                             ),
                           ),
                         ),
