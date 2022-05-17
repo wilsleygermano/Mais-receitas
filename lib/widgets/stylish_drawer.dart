@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:mais_receitas/design/my_colors.dart';
+import 'package:mais_receitas/screens/about_screen.dart';
 import 'package:mais_receitas/screens/logout_screen.dart';
 import 'package:mais_receitas/screens/profile_screen.dart';
 
@@ -25,7 +26,7 @@ class _StylishDrawerState extends State<StylishDrawer> {
               filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
               child: Container(
                 decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 255, 247, 255).withOpacity(0.5)),
+                    color: const  Color.fromARGB(255, 255, 247, 255).withOpacity(0.5)),
               ),
             ),
             Container(
@@ -49,24 +50,27 @@ class _StylishDrawerState extends State<StylishDrawer> {
                   ),
                   const SizedBox(height: 30),
                   const Divider(height: 0.5, color: MyColors.primarylight),
-                  const ListTile(
-                    leading: Icon(
+                   ListTile(
+                    leading: const Icon(
                       Icons.info_outline,
                       color: MyColors.primarylight,
                       size: 25,
                     ),
-                    title: Text("Sobre",
+                    title:const Text("Sobre",
                         style: TextStyle(
-                            color: MyColors.primarylight, fontSize: 20)),
+                            color: MyColors.primarylight, fontSize: 20),),
+                            onTap: () => Navigator.push(context, MaterialPageRoute(
+                        builder: (context) =>const AboutScreen(),
+                      ),),
                   ),
                   const Divider(height: 0.5, color: MyColors.primarylight),
                   ListTile(
-                    leading: Icon(
+                    leading:const Icon(
                       Icons.account_circle_outlined,
                       color: MyColors.primarylight,
                       size: 25,
                     ),
-                    title: Text("Meus Dados",
+                    title:const Text("Meus Dados",
                         style: TextStyle(
                             color: MyColors.primarylight, fontSize: 20),),
                     onTap: () => Navigator.push(
