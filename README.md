@@ -1,16 +1,19 @@
-# mais_receitas
+# Mais Receitas
 
-A new Flutter project.
+“Mais Receitas” is an app made by me and [Lais Bonin](https://github.com/LaisBonin) with Flutter as part of Snow Academy activities. Basically, the app is a recipe book in Portuguese. 
 
-## Getting Started
+The recipes were provided by [Adrianos Ferreira](https://github.com/adrianosferreira/afrodite.json). 
 
-This project is a starting point for a Flutter application.
+Some of the technologies used are: 
 
-A few resources to get you started if this is your first Flutter project:
+* Authentication through an API developed by [Pedro Ganem](https://github.com/pedrocganem).
+* Firebase to store user's favorite recipes.
+* Sliver App Bar.
+* [Hive](https://docs.hivedb.dev/#/) to locally store user's credentials.
+* [Bottom navy bar](https://pub.dev/packages/bottom_navy_bar) package.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+To run this repo, besides cloning it, you're going to need:
+* Flutter and Dart
+* An IDE of your choice (e.g. Vs Code)
+* You must run "flutter pub get" when you open the project for the first time.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
